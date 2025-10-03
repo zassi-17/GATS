@@ -14,6 +14,15 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       ## Rememberable
       t.datetime :remember_created_at
 
+      #アカウント名
+      t.string :name, null: false
+
+      #好きなゲーム
+      t.string :favorite_game, null: false
+
+      #会員ステータス
+      t.boolean :is_active, default: true
+
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at

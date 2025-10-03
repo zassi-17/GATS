@@ -1,1 +1,9 @@
-<%= link_to "About", about_path %>
+<% if current_member %>
+  <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
+
+<% else %>
+  <%= link_to "About", about_path %>
+  <%= link_to "ログイン", new_member_session_path %>
+  <%= link_to "アカウント作成", new_member_registration_path %>
+
+<% end %>
