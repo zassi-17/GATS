@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :member_state, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -26,7 +27,16 @@ class Public::SessionsController < Devise::SessionsController
     about_path
   end
 
-  # protected
+  protected
+
+  def member_state
+    member = Member.find_by(email: params[:member][:email])
+    return if member.nil?
+    return unless member.valid_password?(params[:member][:password])
+    return if member.is_active
+    render :new
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
