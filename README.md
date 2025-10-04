@@ -34,7 +34,7 @@
 - IDE：Visual Studio Code（VSCode）
 ​
 ## 使用素材
-・サイトロゴと架空のゲームパッケージの画像に使用  
+・サイトロゴと架空のアイコン画像に使用  
 　　Canva（https://www.canva.com/）
 
 今サイトで掲載される団体や素材は架空のものです。

@@ -23,13 +23,14 @@ class Public::MembersController < ApplicationController
   def withdraw
     @member = current_member
     @member.update(is_active: false)
+    sign_out(@member)
     redirect_to root_path
   end
 
   private
 
   def member_params
-    params.require(:member).permit(:name, :email, :favorite_game)
+    params.require(:member).permit(:image, :name, :introduction, :email, :favorite_game)
   end
 
 end

@@ -1,5 +1,6 @@
 <% if current_member %>
   <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
+  <%= link_to "マイページ", public_mypage_path %>
 
 <% else %>
   <%= link_to "About", about_path %>

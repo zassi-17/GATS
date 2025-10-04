@@ -1,5 +1,4 @@
 <h1>マイページ</h1>
-  <%= @member.name %>
-  <%= @member.favorite_game %>
+  <%= render 'member_detail', member:@member %>
 
   <%= link_to "プロフィール編集", edit_public_member_path(@member) %>

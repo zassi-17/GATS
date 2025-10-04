@@ -13,8 +13,12 @@ Rails.application.routes.draw do
 
   namespace :public, path: '' do
     get 'mypage' => 'members#mypage', as: 'mypage'
-    patch 'withdraw'
-    resources :members, only: [:show, :edit, :update]
+    
+    resources :members, only: [:show, :edit, :update] do
+      patch :withdraw
+    end
+    
+    resources :reviews
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
