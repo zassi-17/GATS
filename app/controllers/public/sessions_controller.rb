@@ -20,7 +20,7 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    about_path
+    public_mypage_path
   end
 
   def after_sign_out_path_for(resource)
@@ -35,7 +35,7 @@ class Public::SessionsController < Devise::SessionsController
     return unless member.valid_password?(params[:member][:password])
     return if member.is_active
     render :new
-    end
+    
   end
 
   # If you have extra params to permit, append them to the sanitizer.
