@@ -2,4 +2,8 @@
   <%= image_tag @member.image, size:"300x300" %>
   <%= @review.title %>
   <%= @review.body %>
+
+  <% if @review.member == current_member %>
+    <%= link_to "編集する", edit_public_review_path %>
+  <% end %>
 </div>

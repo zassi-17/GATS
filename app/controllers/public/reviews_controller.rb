@@ -14,12 +14,12 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @review = Review.all
+    @reviews = Review.page(params[:page])
   end
 
   def show
     @review = Review.find(params[:id])
-    @member = Member.find(params[:id])
+    @member = @review.member
   end
 
   def edit

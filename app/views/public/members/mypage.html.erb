@@ -1,4 +1,18 @@
 <h1>マイページ</h1>
   <%= render 'member_detail', member:@member %>
 
+  <% current_member.reviews.each do |review| %>
+    <table>
+      <tr>
+        <td><%= image_tag review.member.image, size:"70x70" %></td>
+        <td><%= review.member.name %></td>
+      </tr>
+
+      <tr>
+        <td><%= link_to review.title, public_review_path(review) %></td>
+        <td><%= truncate(review.body, length: 20, omission: "......") %></td>
+      </tr>
+    </table>
+  <% end %>
+
   <%= link_to "プロフィール編集", edit_public_member_path(@member) %>

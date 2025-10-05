@@ -1,5 +1,6 @@
-#<h1>投稿一覧</h1>
-  #<%= @review.each do |review| %>
-    #<tabel>
-      #<tr>
-        #<th>
+<h1>投稿一覧</h1>
+  <% @reviews.each do |review| %>
+    <%= render 'review_list', review: review %>
+  <% end %>
+
+
