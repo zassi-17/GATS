@@ -1,4 +1,7 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_member!, except: [:index, :show]
+  before_action :correct_member, except: [:index, :show]
+
   def new
     @review = Review.new(is_active: true)
   end
@@ -43,8 +46,19 @@ class Public::ReviewsController < ApplicationController
 
 
   private
+
+  #ストロングパラメータ
   def review_params
     params.require(:review).permit(:title, :body, :is_active)
+  end
+
+  
+  #他会員のレビューを編集を禁止するメソッド
+  def correct_member
+    @member = Member.find(params[:id])
+    unless @member == current_member
+    redirect_to root_path flash[:areat] = "他会員レビューの編集は禁止です"
+    end
   end
 
 end

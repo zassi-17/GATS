@@ -1,0 +1,15 @@
+ja:
+  devise:
+    failure:
+      unauthenticated: "ログインまたはアカウント登録が必要です。"
+      invalid: "メールアドレスまたはパスワードが違います。"
+      inactive: "アカウントが有効ではありません。"
+
+  activerecord:
+    errors:
+      models:
+        member:
+          attributes:
+            password: 
+              too_short: "は%{count}文字以上で入力してください"
+              blank: "を入力してください"

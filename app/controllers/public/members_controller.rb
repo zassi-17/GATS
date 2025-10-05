@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
-  before_action :current_member, only: [:edit, :update, :withdraw]
+  before_action :authenticate_member!, only: [:mypage, :edit, :update, :withdraw]
+  before_action :correct_member, only: [:edit, :update, :withdraw]
 
   def mypage
     @member = current_member
@@ -31,8 +32,18 @@ class Public::MembersController < ApplicationController
 
   private
 
+  #ストロングパラメータ
   def member_params
     params.require(:member).permit(:image, :name, :introduction, :email, :favorite_game)
   end
+
+  #他会員のプロフィールを編集を禁止するメソッド
+  def correct_member
+    @member = Member.find(params[:id])
+    unless @member == current_member
+    redirect_to root_path flash[:areat] = "他会員のプロフィール編集は禁止です"
+    end
+  end
+
 
 end
