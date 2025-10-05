@@ -6,13 +6,13 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       #ジャンルID（今後実装予定）
       t.integer :genre_id
       #ゲームタイトル
-      t.string :title
+      t.string :title, null: false
       #本文
-      t.text :body
+      t.text :body, null: false
       #公開ステータス
-      t.boolean :is_active
+      t.boolean :is_active, default: true
       #星評価
-      t.float :rating
+      t.float :rating, default: 1
 
       t.timestamps
     end

@@ -1,2 +1,27 @@
-<h1>Public::Reviews#new</h1>
-<p>Find me in app/views/public/reviews/new.html.erb</p>
+<h1>新規投稿</h1>
+
+  <% if @review.errors.any? %>
+    <%= @review.errors.count %>件のエラーが発生しました。
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <%= form_with model: @review, url: public_reviews_path, local: true do |f| %>
+
+    <%= f.label :title, "ゲームタイトル" %>
+    <%= f.text_field :title %>
+
+    <%= f.label :body, "感想" %>
+    <%= f.text_area :body %>
+
+    <%= f.label :is_active, "投稿を公開しますか？" %>
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, "公開する", value:true %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, "公開しない", value:false %>
+
+    <%= f.submit "新規投稿する" %>
+  <% end %>
