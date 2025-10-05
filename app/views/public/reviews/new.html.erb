@@ -11,17 +11,7 @@
 
   <%= form_with model: @review, url: public_reviews_path, local: true do |f| %>
 
-    <%= f.label :title, "ゲームタイトル" %>
-    <%= f.text_field :title %>
+    <%= render 'form', review: @review, f: f %>
 
-    <%= f.label :body, "感想" %>
-    <%= f.text_area :body %>
-
-    <%= f.label :is_active, "投稿を公開しますか？" %>
-      <%= f.radio_button :is_active, true %>
-      <%= f.label :is_active, "公開する", value:true %>
-      <%= f.radio_button :is_active, false %>
-      <%= f.label :is_active, "公開しない", value:false %>
-
-    <%= f.submit "新規投稿する" %>
+    <%= f.submit "新規投稿" %>
   <% end %>

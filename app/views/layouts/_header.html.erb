@@ -1,4 +1,7 @@
-<% if current_member %>
+<div>
+  <%= link_to "投稿一覧", public_reviews_path %>
+
+  <% if current_member %>
   <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
   <%= link_to "マイページ", public_mypage_path %>
   <%= link_to "新規投稿", new_public_review_path %>
@@ -9,3 +12,4 @@
   <%= link_to "アカウント作成", new_member_registration_path %>
 
 <% end %>
+</div>

@@ -5,7 +5,8 @@
     </tr>
 
     <tr>
-      <td><%= link_to review.title, public_review_path(review) %></td>
+      <td><%= review.title %></td>
       <td><%= truncate(review.body, length: 20, omission: "......") %></td>
+      <td><%= link_to "この投稿を確認する>>>>>", public_review_path(review.id) %></td>
     </tr>
   </table>

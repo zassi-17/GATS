@@ -1,9 +1,12 @@
 <div>
-  <%= image_tag @member.image, size:"300x300" %>
+  <%= link_to public_member_path(@member) do %>
+    <%= image_tag @member.image, size:"300x300" %>
+  <% end %>
+  
   <%= @review.title %>
   <%= @review.body %>
 
   <% if @review.member == current_member %>
-    <%= link_to "編集する", edit_public_review_path %>
+    <%= link_to "レビュー編集", edit_public_review_path %>
   <% end %>
 </div>

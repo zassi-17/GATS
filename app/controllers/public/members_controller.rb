@@ -1,4 +1,6 @@
 class Public::MembersController < ApplicationController
+  before_action :current_member, only: [:edit, :update, :withdraw]
+
   def mypage
     @member = current_member
   end

@@ -1,2 +1,18 @@
-<h1>Public::Reviews#edit</h1>
-<p>Find me in app/views/public/reviews/edit.html.erb</p>
+<h1>レビュー編集</h1>
+
+  <% if @review.errors.any? %>
+    <%= @review.errors.count %>件のエラーが発生しました。
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <%= form_with model: @review, url: public_review_path, local: true do |f| %>
+  
+    <%= render 'form', review: @review, f: f %>
+    <%= f.submit "編集完了" %>
+    <%= link_to "削除する", public_review_path(@review),method: :delete, data: {confirm: "本当に退会しますか？"} %>
+  
+  <% end %>

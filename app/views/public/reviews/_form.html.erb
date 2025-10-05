@@ -1,0 +1,11 @@
+    <%= f.label :title, "ゲームタイトル" %>
+    <%= f.text_field :title %>
+
+    <%= f.label :body, "感想" %>
+    <%= f.text_area :body %>
+
+    <%= f.label :is_active, "投稿を公開しますか？" %>
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, "公開する", value:true %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, "公開しない", value:false %>
