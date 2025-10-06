@@ -1,6 +1,6 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_member!, except: [:index, :show]
-  before_action :correct_member, except: [:index, :show]
+  before_action :correct_member, only: [:edit, :update, :destroy]
 
   def new
     @review = Review.new(is_active: true)
@@ -17,11 +17,11 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.page(params[:page])
+    @reviews = Review.page(params[:page]).where(is_active: true)
   end
 
   def show
-    @review = Review.find(params[:id])
+    @review = Review.find_by(id: params[:id], is_active: true)
     @member = @review.member
   end
 
@@ -55,8 +55,8 @@ class Public::ReviewsController < ApplicationController
   
   #他会員のレビューを編集を禁止するメソッド
   def correct_member
-    @member = Member.find(params[:id])
-    unless @member == current_member
+    @review = Review.find(params[:id])
+    unless @review.member == current_member
     redirect_to root_path flash[:areat] = "他会員レビューの編集は禁止です"
     end
   end

@@ -7,6 +7,6 @@
   <%= @review.body %>
 
   <% if @review.member == current_member %>
-    <%= link_to "レビュー編集", edit_public_review_path %>
+    <%= link_to "レビュー編集", edit_public_review_path(@review) %>
   <% end %>
 </div>
