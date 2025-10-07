@@ -21,9 +21,18 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find_by(id: params[:id], is_active: true)
+    @review = Review.find_by(id: params[:id])
+    if @review.nil?
+      redirect_to public_reviews_path and return 
+    end
+
+    unless @review.is_active? || @review.member == current_member
+      redirect_to public_reviews_path and return
+    end
+
     @member = @review.member
   end
+
 
   def edit
     @review = Review.find(params[:id])

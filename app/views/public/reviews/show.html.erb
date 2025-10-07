@@ -1,12 +1,32 @@
-<div>
-  <%= link_to public_member_path(@member) do %>
-    <%= image_tag @member.image, size:"300x300" %>
-  <% end %>
-  
-  <%= @review.title %>
-  <%= @review.body %>
+<div class = "container mt-4">
+  <div class = "row">
 
-  <% if @review.member == current_member %>
-    <%= link_to "レビュー編集", edit_public_review_path(@review) %>
-  <% end %>
+    <div class = "col-3 text-center">
+      <%= link_to public_member_path(@member) do %>
+        <%= image_tag @member.image, size:"200x200" %>
+      <% end %>
+    </div>
+  
+    <div class = "col-9">
+      <table>
+        <tbody>
+          <tr>
+            <th>ゲームタイトル：</th>
+            <td class="text-break"><%= @review.title %></td>
+          </tr>
+
+          <tr>
+            <th>感想：</th>
+            <td class="text-break"><%= @review.body %><td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    <div class = "text-center mt-4">
+      <% if @review.member == current_member %>
+        <%= link_to "レビュー編集", edit_public_review_path(@review), class: "btn btn-success px-4" %>
+      <% end %>
+    </div>
 </div>

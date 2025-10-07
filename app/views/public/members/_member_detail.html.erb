@@ -1,9 +1,24 @@
-<div>
+<div class = "col-3 text-center">
   <%= image_tag @member.image, size: "200x200" %>
+</div>
 
-  <%= @member.name %>
+<div class="col-9">
+<table>
+  <tbody>
+    <tr>
+      <th>アカウント名：</th>
+      <td class="text-break"><%= @member.name %><td>
+    </tr>
 
-  <%= @member.introduction %>
-  
-  <%= @member.favorite_game %>
+    <tr>
+      <th>自己紹介：</th>
+      <td class= "text-break"><%= @member.introduction %></td>
+    </tr>
+
+    <tr>
+      <th class="w-25">好きなゲームソフト：</th>
+      <td class="text-break"><%= @member.favorite_game %></td>
+    </tr>
+  </tbody>
+</table>
 </div>

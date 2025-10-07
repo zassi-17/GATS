@@ -1,4 +1,5 @@
-<h1>新規投稿</h1>
+<div class = "container mt-3">
+  <h2>新規レビュー投稿フォーム</h2>
 
   <% if @review.errors.any? %>
     <%= @review.errors.count %>件のエラーが発生しました。
@@ -12,6 +13,7 @@
   <%= form_with model: @review, url: public_reviews_path, local: true do |f| %>
 
     <%= render 'form', review: @review, f: f %>
-
-    <%= f.submit "新規投稿" %>
+  <div class = "text-center">
+    <%= f.submit "新規投稿", class: "btn btn-primary px-5 mt-5" %>
   <% end %>
+</div>

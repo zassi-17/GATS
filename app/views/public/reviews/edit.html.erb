@@ -1,4 +1,5 @@
-<h1>レビュー編集</h1>
+<div class = "container">
+<h2>レビュー編集フォーム</h2>
 
   <% if @review.errors.any? %>
     <%= @review.errors.count %>件のエラーが発生しました。
@@ -12,7 +13,11 @@
   <%= form_with model: @review, url: public_review_path, local: true do |f| %>
   
     <%= render 'form', review: @review, f: f %>
-    <%= f.submit "編集完了" %>
-    <%= link_to "削除する", public_review_path(@review),method: :delete, data: {confirm: "本当に退会しますか？"} %>
-  
+
+    <div class = "text-center">
+    <%= f.submit "編集完了", class: "btn btn-success px-4 mr-5 mt-5" %>
+    <%= link_to "削除する", public_review_path(@review),method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger px-4 ml-5 mt-5" %>
+    </div>
+
   <% end %>
+</div>
