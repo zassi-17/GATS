@@ -1,10 +1,8 @@
-  <table>
+
+  <table class = "table table-hover text-left">
     <tr>
       <td><%= image_tag review.member.image, size:"70x70" %></td>
       <td><%= review.member.name %></td>
-    </tr>
-
-    <tr>
       <td><%= review.title %></td>
       <td><%= truncate(review.body, length: 20, omission: "......") %></td>
       <td><%= link_to "この投稿を確認する>>>>>", public_review_path(review) %></td>

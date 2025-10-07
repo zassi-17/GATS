@@ -1,17 +1,25 @@
-<div class = "container-fluid">
-  <div class="row, d-flex justify-content-end">
-  <%= link_to "投稿一覧", public_reviews_path %>
+<div class="container-fluid  bg-color header_color" style="height: 100px;">
+  <div class="row h-100 d-flex align-items-center">
 
-  <% if current_member %>
-  <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
-  <%= link_to "マイページ", public_mypage_path %>
-  <%= link_to "新規投稿", new_public_review_path %>
+    <div class = "col-8">
+      <%= link_to root_path do %>
+        <%= image_tag "GATS_logo.png", size: "80x80" %>
+      <% end %>
+    </div>
 
-<% else %>
-  <%= link_to "About", about_path %>
-  <%= link_to "ログイン", new_member_session_path %>
-  <%= link_to "アカウント作成", new_member_registration_path %>
+    <%= link_to "投稿一覧", public_reviews_path, class: "btn mx-1" %>
 
-<% end %>
+    <% if current_member %>
+      <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn mx-1" %>
+      <%= link_to "マイページ", public_mypage_path, class: "btn mx-1" %>
+      <%= link_to "新規投稿", new_public_review_path, class: "btn mx-1" %>
+
+    <% else %>
+      <%= link_to "About", about_path, class: "btn mx-1" %>
+      <%= link_to "ログイン", new_member_session_path, class: "btn mx-1" %>
+      <%= link_to "アカウント作成", new_member_registration_path, class: "btn mx-1" %>
+
+    <% end %>
+    
   </div>
 </div>

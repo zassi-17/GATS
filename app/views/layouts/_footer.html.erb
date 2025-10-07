@@ -1,1 +1,15 @@
-<div>君だけのゲーム履歴を刻め！  GATS</div>
+<div class = "container-fluid" >
+  <div class = "row bg-color footer_color d-flex align-items-center" style ="height: 50px;" >
+    <% if signed_in? %>
+
+      <div class = col-5><%= link_to "マイページへ", public_mypage_path(@member) %></div>
+
+    <% else %>
+
+      <div class = col-5><%= link_to "トップページへ", root_path %></div>
+
+    <% end %>
+
+    <div>GATS（ Gamers All Track System ）</div>
+  </div>
+</div>

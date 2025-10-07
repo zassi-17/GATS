@@ -1,1 +1,22 @@
-<h1>こちらはGATSだ。よろしく</h1>
+<div class = "container-fluid ">
+
+  <div class = "card w-50 mt-3 d-flex justify-content-center align-items-center mx-auto">
+    <%= image_tag "GATS_top.png", class: "card-img-top" %>
+
+    <div class = card-title>
+      <h4>Welcome to GATS（Gamers All Track System ）, the Review Site!</h4>
+    </div>
+
+    <div class="card-body">
+      <h5>新着レビューがあります！<br>
+        下にある投稿からレビューをご覧ください！</h5>
+    </div>
+  </div>
+
+    <% @review.each do |review| %>
+      <%= render "public/reviews/review_list", review: review %>
+    <% end %>
+
+</div>
+
+

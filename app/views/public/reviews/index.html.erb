@@ -3,4 +3,8 @@
     <%= render 'review_list', review: review %>
   <% end %>
 
+<div class = "d-flex justify-content-around">
+  <%= paginate @reviews %>
+</div>
+
 
