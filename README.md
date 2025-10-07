@@ -24,7 +24,9 @@
 
 ​
 ## 設計書
-後ほど作成する  
+![ER図](docs/images/GATS_ER図.drawio.png)
+![UI Flow_ユーザー](docs/images/UIFlows_ユーザー.drawio.png)
+・一部、未実装のページがあります。（後に実装予定）
 ​
 ## 開発環境
 - OS：Windows
@@ -36,6 +38,7 @@
 ## 使用素材
 ・サイトロゴと架空のアイコン画像に使用  
 　　Canva（https://www.canva.com/）
+    ChatGPT(https://chatgpt.com/)
 
 今サイトで掲載される団体や素材は架空のものです。
 なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します。
