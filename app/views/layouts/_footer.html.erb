@@ -2,14 +2,14 @@
   <div class = "row bg-color footer_color d-flex align-items-center" style ="height: 50px;" >
     <% if signed_in? %>
 
-      <div class = col-5><%= link_to "マイページへ", public_mypage_path(@member) %></div>
+      <div><%= link_to "マイページへ", public_mypage_path(@member), class: "btn header_btn_color ml-2" %></div>
 
     <% else %>
 
-      <div class = col-5><%= link_to "トップページへ", root_path %></div>
+      <div><%= link_to "トップページへ", root_path, class: "btn header_btn_color ml-2" %></div>
 
     <% end %>
 
-    <div>GATS（ Gamers All Track System ）</div>
+    <div class = "w-50 d-flex justify-content-end">GATS（ Gamers All Track System ）</div>
   </div>
 </div>

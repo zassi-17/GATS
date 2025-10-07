@@ -4,6 +4,7 @@ class Public::MembersController < ApplicationController
 
   def mypage
     @member = current_member
+    @reviews = current_member.reviews.page(params[:page])
   end
 
   def edit

@@ -10,8 +10,11 @@
     <%= link_to "プロフィール編集", edit_public_member_path(@member), class: "btn btn-success px-3" %>
   </div>
 
-  <% current_member.reviews.each do |review| %>
+  <% @reviews.each do |review| %>
     <%= render 'public/reviews/review_list', review: review %>
   <% end %>
 
+  <div class = "d-flex justify-content-center"> 
+    <%= paginate @reviews %>
+  </div>
 </div>

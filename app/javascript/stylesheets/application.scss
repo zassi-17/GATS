@@ -1,9 +1,18 @@
 @use '~bootstrap/scss/bootstrap';
 
 .header_color {
-  background-color: #EEEEEE;
+  background-color: #9057FF;
 }
 
 .footer_color {
-  background-color: #CCFFCC;
+  background-color: #9057FF;
+}
+
+.header_btn_color {
+  background-color: #DCC2FF;
+  border-radius: 6px;
+}
+
+.btn.header_btn_color:hover {
+  background-color: #C8A9FF;
 }

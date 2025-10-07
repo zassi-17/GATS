@@ -3,10 +3,11 @@
   <% @reviews.each do |review| %>
     <%= render 'review_list', review: review %>
   <% end %>
-</div>
 
-<div class = "d-flex justify-content-around">
-  <%= paginate @reviews %>
+
+  <div class = "d-flex justify-content-center">
+    <%= paginate @reviews %>
+  </div>
 </div>
 
 

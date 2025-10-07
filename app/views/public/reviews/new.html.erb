@@ -13,7 +13,9 @@
   <%= form_with model: @review, url: public_reviews_path, local: true do |f| %>
 
     <%= render 'form', review: @review, f: f %>
+
   <div class = "text-center">
     <%= f.submit "新規投稿", class: "btn btn-primary px-5 mt-5" %>
+  </div>
   <% end %>
 </div>
