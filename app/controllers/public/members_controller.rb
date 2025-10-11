@@ -1,6 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!, only: [:mypage, :edit, :update, :withdraw]
-  before_action :correct_member, only: [:edit, :update, :withdraw]
+  before_action :correct_member, only: [:edit, :update]
 
   def mypage
     @member = current_member
@@ -28,7 +28,7 @@ class Public::MembersController < ApplicationController
     @member = current_member
     @member.update(is_active: false)
     sign_out(@member)
-    redirect_to root_path
+    redirect_to new_member_registration_path
   end
 
   private
@@ -42,7 +42,8 @@ class Public::MembersController < ApplicationController
   def correct_member
     @member = Member.find(params[:id])
     unless @member == current_member
-    redirect_to root_path flash[:areat] = "他会員のプロフィール編集は禁止です"
+    redirect_to public_member_path(@member)
+    flash[:alert] = "他会員のプロフィール編集は禁止です"
     end
   end
 

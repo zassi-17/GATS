@@ -1,6 +1,15 @@
 <div class = "container mt-3">
   <h2>プロフィール編集フォーム</h2>
 
+    <% if @member.errors.any? %>
+      <%= @member.errors.count %>件のエラーが発生しました。
+        <ul>
+          <% @member.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
+
   <%= form_with model: [:public,@member], local: true do |f| %>
   
   <div class = "row d-flex justify-content-center">
