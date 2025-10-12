@@ -71,10 +71,10 @@ ActiveRecord::Schema.define(version: 2025_10_04_154747) do
   create_table "reviews", force: :cascade do |t|
     t.integer "member_id"
     t.integer "genre_id"
-    t.string "title"
-    t.text "body"
-    t.boolean "is_active"
-    t.float "rating"
+    t.string "title", null: false
+    t.text "body", null: false
+    t.boolean "is_active", default: true
+    t.float "rating", default: 1.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

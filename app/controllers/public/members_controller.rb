@@ -42,7 +42,7 @@ class Public::MembersController < ApplicationController
   def correct_member
     @member = Member.find(params[:id])
     unless @member == current_member
-    redirect_to public_member_path(@member)
+    redirect_to public_mypage_path(@member)
     flash[:alert] = "他会員のプロフィール編集は禁止です"
     end
   end
