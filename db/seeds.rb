@@ -8,7 +8,7 @@
 
 zassi = Member.find_or_create_by!(email: "saigusa@example.com") do |member|
   member.name = "ザッシ"
-  member.password = "123456"
+  member.password = "#{ENV['SECRET_KEY']}"
   member.password_confirmation = "#{ENV['SECRET_KEY']}" 
   member.introduction = "よろしく" 
   member.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
@@ -19,7 +19,7 @@ end
 razer = Member.find_or_create_by!(email: "razer@example.com") do |member|
   member.name = "レーザー"
   member.password = "#{ENV['SECRET_KEY']}"
-  member.password_confirmation = "123456" 
+  member.password_confirmation = "#{ENV['SECRET_KEY']}" 
   member.introduction = "ホラーゲーム大好き" 
   member.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.png"), filename:"sample-user2.png")
   member.favorite_game = "壱~one~"
