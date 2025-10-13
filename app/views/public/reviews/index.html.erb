@@ -1,5 +1,7 @@
 <div class = "container">
 
+  <h1><%= flash[:alert] %></h1>
+
   <% @reviews.each do |review| %>
     <%= render 'review_list', review: review %>
   <% end %>
