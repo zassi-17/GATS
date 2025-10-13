@@ -10,7 +10,7 @@
       </ul>
   <% end %>
 
-  <%= form_with model: @review, url: public_review_path, local: true do |f| %>
+  <%= form_with model: [:public,@review], local: true do |f| %>
   
     <%= render 'form', review: @review, f: f %>
 

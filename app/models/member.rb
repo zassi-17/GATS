@@ -11,6 +11,7 @@ class Member < ApplicationRecord
   validates :introduction, presence: true
   validates :favorite_game, presence: true
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
+  has_many :review_comments, dependent: :destroy
 end

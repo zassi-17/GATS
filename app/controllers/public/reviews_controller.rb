@@ -31,6 +31,7 @@ class Public::ReviewsController < ApplicationController
     end
 
     @member = @review.member
+    @review_comment = ReviewComment.new
   end
 
 
