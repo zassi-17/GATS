@@ -1,6 +1,6 @@
 class Public::SearchesController < ApplicationController
 
-  def Search
+  def search
     @model = params[:model]
     @key_word = params[:key_word]
 
