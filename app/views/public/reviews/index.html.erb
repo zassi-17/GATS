@@ -2,6 +2,8 @@
 
   <h1><%= flash[:alert] %></h1>
 
+  <%= render 'public/searches/search_form' %>
+
   <% @reviews.each do |review| %>
     <%= render 'review_list', review: review %>
   <% end %>
