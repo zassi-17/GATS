@@ -14,4 +14,18 @@ class Member < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   has_many :review_comments, dependent: :destroy
+
+  def self.looks(search,key_word)
+    if search == "perfect_match"
+      @member = Member.where("name LIKE?","#{key_word}")
+    elsif search == "forward_match"
+      @member = Member.where("name LIKE?","#{key_word}%")
+    elsif search == "backward_match"
+      @member = Member.where("name LIKE?","%#{key_word}")
+    elsif search == "partial_match"
+      @member = Member.where("name LIKE?","%#{key_word}%")
+    else
+      @member = Member.all
+    end
+  end
 end

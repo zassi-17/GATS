@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   namespace :public, path: '' do
     get 'mypage' => 'members#mypage', as: 'mypage'
+
+    get 'search' => 'searches#search'
     
     resources :members, only: [:show, :edit, :update] do
       patch :withdraw
