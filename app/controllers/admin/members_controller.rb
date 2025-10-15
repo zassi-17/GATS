@@ -1,20 +1,21 @@
 class Admin::MembersController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_admin!
 
   def index
     @members = Member.page(params[:page])
   end
 
-  def show
+  def edit
     @member = Member.find(params[:id])
   end
 
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
-      redirect_to admin_member_path
+      redirect_to admin_members_path
+      flash[:notice] = "編集完了しました！"
     else
-      render :show
+      render :edit
     end
   end
 
@@ -24,7 +25,7 @@ class Admin::MembersController < ApplicationController
 
   #ストロングパラメータ
   def member_params
-    params.require(:member).permit(:image, :name, :introduction, :email, :favorite_game)
+    params.require(:member).permit(:image, :name, :introduction, :email, :favorite_game, :is_active)
   end
 
 end

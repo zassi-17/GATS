@@ -19,7 +19,6 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  protected
 
   def after_sign_in_path_for(resource)
     public_mypage_path
@@ -28,6 +27,9 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     about_path
   end
+
+
+  protected
 
   #退会済みのアカウントでログインできないようにするメソッド
   def member_state

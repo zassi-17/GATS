@@ -61,6 +61,11 @@ ActiveRecord::Schema.define(version: 2025_10_12_103154) do
     t.string "name", null: false
     t.string "favorite_game", null: false
     t.boolean "is_active", default: true
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "introduction", null: false

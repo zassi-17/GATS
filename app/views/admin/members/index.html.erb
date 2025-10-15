@@ -1,1 +1,7 @@
 <h2>会員一覧</h2>
+
+  <% @members.each do |member| %>
+    アカウント名：<%= link_to member.name, edit_admin_member_path(member) %>
+    メールアドレス：<%= member.email %>
+    会員ステータス：<%= member.is_active %>
+  <% end %>

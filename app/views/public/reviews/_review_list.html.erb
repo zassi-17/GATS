@@ -13,7 +13,7 @@
         <div class ="mr-3">
           <%= review.title %>
           <p class="mt-3"><%= truncate(review.body, length: 40, omission: "......") %></p>
-          投稿日：<%= review.created_at %>
+          投稿日：<%= review.created_at.strftime("%Y/%m/%d %H:%M") %>
         </div>
 
         <div class ="mr-2">
