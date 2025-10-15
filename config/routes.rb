@@ -24,5 +24,10 @@ Rails.application.routes.draw do
       resources :review_comments, only: [:create, :destroy]
     end
   end
+
+  namespace :admin do
+    resources :members, only: [:index, :show, :update]
+    root to: 'members#index'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
