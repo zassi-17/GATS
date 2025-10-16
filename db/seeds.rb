@@ -38,3 +38,8 @@ Review.find_or_create_by!(title: "ザ・スピードレース") do |review|
   review.is_active = true
 end
 
+Admin.find_or_create_by!(email: "review_admin@example.com") do |admin|
+  admin.password = "#{ENV['ADMIN_KEY']}"
+  admin.password_confirmation = "#{ENV['ADMIN_KEY']}"
+end
+

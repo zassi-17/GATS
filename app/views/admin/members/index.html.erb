@@ -1,0 +1,37 @@
+<div class = "container" >
+  <h2>全会員数（<%= Member.count %>アカウント）</h2>
+
+
+  <div class = "row d-flex ">
+    <table class ="table table-hover">
+      <thead>
+        <tr>
+          <th>アカウント名</th>
+          <th>メールアドレス</th>
+          <th>会員ステータス</th>
+        </tr>
+      </thead>
+
+      <% @members.each do |member| %>
+
+      <tbody>
+        <tr class = "position-relative">
+          <td><%= link_to member.name, edit_admin_member_path(member), class: "stretched-link text-dark" %></td>
+          <td><%= member.email %></td>
+          <td>
+            <% if member.is_active %>
+              <div>有効会員</div>
+            <% else %>
+              <div>退会会員</div>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+
+   <div class = "d-flex justify-content-center">
+    <%= paginate @members %>
+  </div>
+</div>

@@ -12,13 +12,19 @@
         <tbody>
           <tr>
             <th>ゲームタイトル：</th>
-            <td class="text-break"><%= @review.title %></td>
+            <td class = "text-break"><%= @review.title %></td>
+          </tr>
+
+          <tr>
+            <th>ゲームジャンル：</th>
+            <td class = "text-break"><%= @review.genre.name %></td>
           </tr>
 
           <tr>
             <th>感想：</th>
-            <td class="text-break"><%= @review.body %><td>
+            <td class = "text-break"><%= @review.body %><td>
           </tr>
+
         </tbody>
       </table>
     </div>

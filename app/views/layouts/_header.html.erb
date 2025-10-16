@@ -1,20 +1,40 @@
 <div class="container-fluid  bg-color header_color" style="height: 100px;">
   <div class="row h-100 d-flex align-items-center">
 
-    <div class = "col-8">
-      <%= link_to root_path do %>
-        <%= image_tag "GATS_logo.png", size: "90x90" %>
-      <% end %>
-    </div>
+    <% if current_admin %>
 
-    <%= link_to "投稿一覧", public_reviews_path, class: "btn header_btn_color mx-1" %>
+      <div class = "col-8">
+        <%= link_to admin_root_path do %>
+          <%= image_tag "GATS_logo.png", size: "150x90" %>
+        <% end %>
+      </div>
 
-    <% if current_member %>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn header_btn_color mx-1" %>
+      <%= link_to "ジャンル追加", admin_genres_path, class: "btn header_btn_color mx-1" %>
+
+
+    <% elsif current_member %>
+
+      <div class = "col-8">
+        <%= link_to root_path do %>
+          <%= image_tag "GATS_logo.png", size: "150x90" %>
+        <% end %>
+      </div>
+
+      <%= link_to "投稿一覧", public_reviews_path, class: "btn header_btn_color mx-1" %>
       <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn header_btn_color mx-1" %>
       <%= link_to "マイページ", public_mypage_path, class: "btn header_btn_color mx-1" %>
       <%= link_to "新規投稿", new_public_review_path, class: "btn header_btn_color mx-1" %>
 
     <% else %>
+
+      <div class = "col-8">
+        <%= link_to root_path do %>
+          <%= image_tag "GATS_logo.png", size: "150x90" %>
+        <% end %>
+      </div>
+
+      <%= link_to "投稿一覧", public_reviews_path, class: "btn header_btn_color mx-1" %>
       <%= link_to "About", about_path, class: "btn header_btn_color mx-1" %>
       <%= link_to "ログイン", new_member_session_path, class: "btn header_btn_color mx-1" %>
       <%= link_to "アカウント作成", new_member_registration_path, class: "btn header_btn_color mx-1" %>

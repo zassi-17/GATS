@@ -1,12 +1,17 @@
 <div class = "container-fluid" >
   <div class = "row bg-color footer_color d-flex align-items-center" style ="height: 50px;" >
-    <% if signed_in? %>
+    <% if current_member %>
 
-      <div><%= link_to "マイページへ", public_mypage_path(@member), class: "btn header_btn_color ml-2" %></div>
+      <%= link_to "マイページへ", public_mypage_path(@member), class: "btn header_btn_color ml-2" %>
+    
+    <% elsif current_admin %>
 
+      <%= link_to "トップページへ", admin_root_path, class: "btn header_btn_color ml-2" %>
+
+    
     <% else %>
 
-      <div><%= link_to "トップページへ", root_path, class: "btn header_btn_color ml-2" %></div>
+      <%= link_to "トップページへ", root_path, class: "btn header_btn_color ml-2" %>
 
     <% end %>
 

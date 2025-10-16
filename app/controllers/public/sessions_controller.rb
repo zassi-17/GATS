@@ -19,6 +19,7 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+
   def after_sign_in_path_for(resource)
     public_mypage_path
   end
@@ -27,8 +28,10 @@ class Public::SessionsController < Devise::SessionsController
     about_path
   end
 
+
   protected
 
+  #退会済みのアカウントでログインできないようにするメソッド
   def member_state
     member = Member.find_by(email: params[:member][:email])
     return if member.nil?
