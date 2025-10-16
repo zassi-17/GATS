@@ -6,6 +6,9 @@
     <%= f.label :body, "感想", class: "col-form-label mt-3" %>
     <%= f.text_area :body, rows:3, class: "form-control" %>
 
+    <%= f.label :genre_id, "ゲームジャンル", class: "col-form-label mt-3" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name,{ prompt: '--選択してください--' }, { class: "form-control" } %>
+
     <%= f.label :is_active, "投稿を公開しますか？", class: "col-form-label mt-3" %>
       <%= f.radio_button :is_active, true %>
       <%= f.label :is_active, "公開する", value:true %>

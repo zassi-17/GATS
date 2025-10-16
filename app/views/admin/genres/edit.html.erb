@@ -1,0 +1,17 @@
+<div class = "container">
+  <h2>ジャンル名編集</h2>
+
+  <div class = "row d-flex justify-content-center">
+    <div class="field col-5 mt-4">
+        <%= form_with model:[:admin,@genre], local: true do |f| %>
+          <%= f.label "ジャンル名", class: "col-form-label mb-2" %>
+          <%= f.text_field :name, class: "form-control" %>
+
+          <div class = "text-center">
+            <%= f.submit "編集完了", class: "btn btn-success px-4 mr-5 mt-5" %>
+            <%= link_to "削除する", admin_genre_path, method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger px-4 ml-5 mt-5" %>
+          <div>
+        <% end %>
+    </div>
+  </div>
+</div>

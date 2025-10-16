@@ -1,23 +1,27 @@
 <div class = "container mt-3">
-  <h2>会員ID：<%= @member.id %><%= @member.name %></h2>
+  <div class = "row d-flex flex-column">
+    <h2>会員ID：<%= @member.id %></h2>
 
-  アカウント作成日時：<%= @member.created_at.strftime("%Y/%m/%d %H:%M") %>
+    <h4>アカウント作成日時：<%= @member.created_at.strftime("%Y/%m/%d %H:%M") %></h4>
 
-  最終ログイン日時：
-  <% if @member.current_sign_in_at.nil? %>
-    <%= "ログイン無し" %>
-  <% else %>
-    <%= @member.current_sign_in_at.strftime("%Y/%m/%d %H:%M") %>
-  <% end %>
+    <h4>最終ログイン日時：
+      <% if @member.current_sign_in_at.nil? %>
+        <%= "ログイン無し" %>
+      <% else %>
+        <%= @member.current_sign_in_at.strftime("%Y/%m/%d %H:%M") %>
+      <% end %>
+    </h4>
 
-    <% if @member.errors.any? %>
-      <%= @member.errors.count %>件のエラーが発生しました。
-        <ul>
-          <% @member.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-    <% end %>
+      <% if @member.errors.any? %>
+        <div class = "alert alert-warning"<%= @member.errors.count %>件のエラーが発生しました。
+          <ul>
+            <% @member.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+  </div>
 
   <%= form_with model: [:admin,@member], local: true do |f| %>
   
@@ -63,7 +67,7 @@
     </div>
 
     <div class = "text-center">
-      <%= f.submit "編集完了" %>
+      <%= f.submit "編集完了", class: "btn btn-success px-4 my-2" %>
     </div>
   <% end %>
 </div>

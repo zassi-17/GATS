@@ -6,6 +6,8 @@ class Review < ApplicationRecord
 
   has_many :review_comments, dependent: :destroy
 
+  belongs_to :genre
+
   def self.looks(search,key_word)
     if search == "perfect_match"
       @review = Review.where("title LIKE?","#{key_word}")
