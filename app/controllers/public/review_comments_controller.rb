@@ -9,28 +9,23 @@ class Public::ReviewCommentsController < ApplicationController
       redirect_to public_review_path(@review)
     else
       @member = @review.member
-      flash[:alert] = "コメントを入力してださい"
+      flash.now[:alert] = "コメントを入力してださい"
       render 'public/reviews/show'
     end
   end
 
   def destroy
     review_comment = ReviewComment.find(params[:id])
-    if current_member == review_comment.member
+    current_member == review_comment.member
     review_comment.destroy
     redirect_to public_review_path(params[:review_id])
-    else
-      @review = Review.find(params[:review_id])
-      @member = @review.member
-      flash[:alert] = "他会員のコメント削除は禁止です"
-      render 'public/reviews/show'
-    end
   end
 
 
 
   private
 
+  #ストロングパラメータ
   def review_comment_params
     params.require(:review_comment).permit(:body)
   end

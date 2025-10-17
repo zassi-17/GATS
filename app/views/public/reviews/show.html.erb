@@ -36,26 +36,47 @@
       <% end %>
     </div>
 
-    <div class = "border-top mt-3">
-
+  
+    <div class = "border-bottom mt-3">
+      <h4>コメント　<%= @review.review_comments.count %>件
       <%= flash[:alert] %>
+      </h4>
+    </div>
 
-      <%= form_with model: [:public,@review,@review_comment], local: true do |f| %>
-        <%= f.text_area :body, row: 3 %>
-        <%= f.submit "コメントする" %>
-      <% end %>
+  <div class = "row d-flex justify-content-between">
 
+    <div class = "col-12 col-sm-6">
+      <div class="field col-10 mt-4">
+        <%= form_with model: [:public,@review,@review_comment], local: true do |f| %>
+          <%= f.text_area :body, row: 3, class: "form-control" %>
+          <%= f.submit "コメントする", class: "btn btn-primary my-3 px-3" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class = "col-12 col-sm-6">
       <% @review.review_comments.each do |review_comment| %>
-        <%= link_to public_member_path(review_comment.member) do %>
-          <%= image_tag review_comment.member.image, size:"50x50" %>
-        <% end %>
+        <div class ="card my-3 p-3 border-0"> 
+          <div class ="d-flex">
 
-        <%= review_comment.member.name %>
-        <%= review_comment.body %>
+            <div class ="d-flex flex-column align-items-center mr-3">
+              <%= link_to public_member_path(review_comment.member) do %>
+                <%= image_tag review_comment.member.image, size:"50x50", class: "rounded-circle" %>
+              <% end %>
+              <%= review_comment.member.name %>
+            </div>
+            
+            <div class = "text-break">
+              <%= review_comment.body %>
+            </div>
+          </div>
 
-        <% if current_member == review_comment.member %>
-          <%= link_to "コメント削除", public_review_review_comment_path(review_comment.review, review_comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
-        <% end %>
+            <% if current_member == review_comment.member %>
+              <%= link_to "コメント削除", public_review_review_comment_path(review_comment.review, review_comment),
+              method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger col-3" %>
+            <% end %>
+        </div>
       <% end %>
     </div>
+  </div>
 </div>
