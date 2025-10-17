@@ -26,17 +26,41 @@ razer = Member.find_or_create_by!(email: "razer@example.com") do |member|
   member.is_active = true
 end
 
-Review.find_or_create_by!(title: "みんなの冬休み2") do |review|
+
+genre_rpg = Genre.find_or_create_by!(name: "RPG")
+
+genre_adventure = Genre.find_or_create_by(name: "アドベンチャーゲーム")
+
+genre_race = Genre.find_or_create_by(name: "レースゲーム")
+
+genre_mystery = Genre.find_or_create_by(name: "推理ゲーム")
+
+
+review_winter =Review.find_or_create_by!(title: "みんなの冬休み2") do |review|
   review.member = zassi
   review.body = "懐かしい感覚になるゲーム"
+  review.genre = genre_adventure
   review.is_active = true
 end
 
 Review.find_or_create_by!(title: "ザ・スピードレース") do |review|
   review.member = razer
   review.body = "爽快感と緊張感で楽しいゲーム"
+  review.genre = genre_race
   review.is_active = true
 end
+
+
+review_comment_first = ReviewComment.find_or_create_by(body: "参考になりました。ところで、どの機種でプレイしました？") do |review_comment|
+  review_comment.member = razer
+  review_comment.review = review_winter
+end
+
+review_comment_second = ReviewComment.find_or_create_by(body: "雪合戦の大会、勝てなくて詰んだ思い出あります。") do |review_comment|
+  review_comment.member = razer
+  review_comment.review = review_winter
+end
+
 
 Admin.find_or_create_by!(email: "review_admin@example.com") do |admin|
   admin.password = "#{ENV['ADMIN_KEY']}"
