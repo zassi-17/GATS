@@ -1,6 +1,7 @@
 <div class="container-fluid  bg-color header_color" style="height: 100px;">
   <div class="row h-100 d-flex align-items-center">
 
+
     <% if current_admin %>
 
       <div class = "col-8">
@@ -9,13 +10,14 @@
         <% end %>
       </div>
 
+
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn header_btn_color mx-1" %>
       <%= link_to "ジャンル追加", admin_genres_path, class: "btn header_btn_color mx-1" %>
 
 
     <% elsif current_member %>
 
-      <div class = "col-8">
+      <div class = "col-3">
         <%= link_to root_path do %>
           <%= image_tag "GATS_logo.png", size: "150x90" %>
         <% end %>
@@ -28,10 +30,14 @@
 
     <% else %>
 
-      <div class = "col-8">
+      <div class = "col-2">
         <%= link_to root_path do %>
           <%= image_tag "GATS_logo.png", size: "150x90" %>
         <% end %>
+      </div>
+
+      <div class = "col-6">
+        <%= render 'public/searches/search_form' %>
       </div>
 
       <%= link_to "投稿一覧", public_reviews_path, class: "btn header_btn_color mx-1" %>

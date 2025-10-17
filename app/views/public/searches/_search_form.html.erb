@@ -1,9 +1,12 @@
-<div>
+
   <%= form_with url: public_search_path, local: true, method: :get do |f| %>
-    <%= f.text_field :key_word %>
-    <%= f.select :model, options_for_select([["ユーザー","Member"],["レビュータイトル","Review"]]) %>
+  <div class = "d-flex">
+    <%= f.text_field :key_word, placeholder: '検索キーワードを入力してください',class: "form-control col-4" %>
+    <%= f.select :model, options_for_select([["ユーザー","Member"],["レビュータイトル","Review"]]), { prompt: "--選択してください--" } ,{ class: "form-control col-3 ml-2" } %>
     <%= f.select :search, options_for_select([["完全一致","perfect_match"],["前方一致","forward_match"],
-    ["後方一致","backward_match"],["部分一致","partial_match"]]) %>
-    <%= f.submit "検索" %>
+    ["後方一致","backward_match"],["部分一致","partial_match"]]), { prompt: "--選択してください--" } ,{ class: "form-control col-3 ml-2" } %>
+  </div>
+  <div class = "text-center mt-1">
+    <%= f.submit "検索", class: "btn header_btn_color px-4" %>
+  </div>
   <% end %>
-</div>
