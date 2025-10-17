@@ -26,6 +26,7 @@
 ## 設計書
 ![ER図](docs/images/GATS_ER図.drawio.png)
 ![UI Flow_ユーザー](docs/images/UIFlows_ユーザー.drawio.png)
+![UI Flow_管理者](docs/images/UIFlows_管理者.drawio.png)
 ・一部、未実装のページがあります。（後に実装予定）
 ​
 ## 開発環境
