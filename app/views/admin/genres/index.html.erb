@@ -1,12 +1,41 @@
-<h2>ジャンル登録・一覧</h2>
-  <%= form_with model:[:admin,@genre], local: true do |f| %>
-    <%= f.label "ジャンル名" %>
-    <%= f.text_field :name %>
-    <%= f.submit "新規登録" %>
-  <% end %>
+<div class = "container">
 
-  <% @genres.each do |genre| %>
-    <%= genre.name %>
-    <%= link_to "編集する", edit_admin_genre_path(genre) %>
-  <% end %>
+  <div class = "mt-2">
+    <h2>ジャンル登録・一覧</h2>
+  </div>
+
+  <div class = "row d-flex justify-content-between">
+
+    <div class = "col-12 col-sm-6">
+      <div class="field col-10 mt-4">
+        <%= form_with model:[:admin,@genre], local: true do |f| %>
+          <%= f.label "ジャンル名", class: "col-form-label mb-2" %>
+          <%= f.text_field :name, class: "form-control" %>
+          <%= f.submit "新規登録", class: "btn btn-primary my-3 px-4" %>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class = "col-12 col-sm-6">
+      <table class = "table table-hover">
+        <thead>
+          <tr>
+            <th>ジャンル名</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <% @genres.each do |genre| %>
+
+        <tbody>
+          <tr class = "position-relative">
+            <td><%= genre.name %></td>
+            <td><%= link_to "編集する", edit_admin_genre_path(genre), class: "stretched-link text-dark" %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
 
