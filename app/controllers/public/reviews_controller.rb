@@ -59,7 +59,7 @@ class Public::ReviewsController < ApplicationController
 
   #ストロングパラメータ
   def review_params
-    params.require(:review).permit(:title, :body, :genre_id, :is_active)
+    params.require(:review).permit(:title, :body, :genre_id, :is_active, :rating)
   end
 
   

@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2025_10_16_070857) do
     t.string "title", null: false
     t.text "body", null: false
     t.boolean "is_active", default: true
-    t.float "rating", default: 1.0
+    t.float "rating", default: 1.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
