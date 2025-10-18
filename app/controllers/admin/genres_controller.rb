@@ -7,10 +7,11 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
+    @genres = Genre.all
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to admin_genres_path
       flash[:notice] = "新規登録完了しました！"
+      redirect_to admin_genres_path
     else
       render :index
     end

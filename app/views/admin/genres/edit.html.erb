@@ -2,6 +2,15 @@
 
   <div class = "mt-2">
     <h2>ジャンル名編集</h2>
+
+    <% if @genre.errors.any? %>
+      <%= @genre.errors.count %>件のエラーが発生しました。
+        <ul>
+          <% @genre.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
   </div>
 
   <div class = "row d-flex justify-content-center">
