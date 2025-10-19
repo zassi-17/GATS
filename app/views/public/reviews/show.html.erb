@@ -11,6 +11,11 @@
       <table>
         <tbody>
           <tr>
+            <th>評価：</th>
+            <td><%= render "public/reviews/static_rating", review: @review %></td>
+          </tr>
+
+          <tr>
             <th>ゲームタイトル：</th>
             <td class = "text-break"><%= @review.title %></td>
           </tr>

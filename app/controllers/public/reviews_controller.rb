@@ -3,7 +3,7 @@ class Public::ReviewsController < ApplicationController
   before_action :correct_member, only: [:edit, :update, :destroy]
 
   def new
-    @review = Review.new(is_active: true)
+    @review = Review.new(is_active: true, rating: 1)
   end
 
   def create
@@ -59,7 +59,7 @@ class Public::ReviewsController < ApplicationController
 
   #ストロングパラメータ
   def review_params
-    params.require(:review).permit(:title, :body, :genre_id, :is_active)
+    params.require(:review).permit(:title, :body, :genre_id, :is_active, :rating)
   end
 
   
