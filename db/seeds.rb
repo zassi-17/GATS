@@ -40,6 +40,7 @@ review_winter =Review.find_or_create_by!(title: "みんなの冬休み2") do |re
   review.member = zassi
   review.body = "懐かしい感覚になるゲーム"
   review.genre = genre_adventure
+  review.rating = "4"
   review.is_active = true
 end
 
@@ -47,6 +48,7 @@ Review.find_or_create_by!(title: "ザ・スピードレース") do |review|
   review.member = razer
   review.body = "爽快感と緊張感で楽しいゲーム"
   review.genre = genre_race
+  review.rating = "3.5"
   review.is_active = true
 end
 
