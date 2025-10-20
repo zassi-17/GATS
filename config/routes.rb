@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get 'mypage' => 'members#mypage', as: 'mypage'
 
     get 'search' => 'searches#search'
+
+    get 'genre_search' => 'searches#genre_search'
     
     resources :members, only: [:show, :edit, :update] do
       patch :withdraw

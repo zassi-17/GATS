@@ -10,7 +10,7 @@
     <div class ="d-flex flex-column flex-grow-1">
       
       <div class ="d-flex justify-content-between align-items-start mb-2">
-        <div class ="mr-3">
+        <div class ="mr-1">
           <%= render "public/reviews/static_rating", review: review %>
           <p class = "mt-3">
             <%= review.title %>
@@ -21,16 +21,23 @@
         </div>
 
         <div class ="mr-2">
-          <p>　</p>
+          <br>
+
+          <p class = "mt-3">
+            ゲームジャンル：<%= review.genre.name %>
+          </p>
           <p class = "mt-3">
             コメント数：<%= review.review_comments.count %>
           </p>
+        </div>
+        
+        <div>
+          <br>
+          
           <p class = "mt-3">
             投稿日：<%= review.created_at.strftime("%Y/%m/%d %H:%M") %>
           </p>
-        </div>
-        
-        <div class ="mt-4">
+
           <%= link_to "この投稿を確認する>>>>>", public_review_path(review) %>
         </div>
       </div>
