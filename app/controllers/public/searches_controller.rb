@@ -10,4 +10,9 @@ class Public::SearchesController < ApplicationController
       @reviews = Review.looks(params[:search],params[:key_word])
     end
   end
+
+  def genre_search
+    @genre = Genre.find(params[:genre_id])
+    @reviews = @genre.reviews.where(is_active: true).page(params[:page])
+  end
 end
