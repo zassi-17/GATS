@@ -1,1 +1,45 @@
-<h2>管理レビュー一覧</h2>
+<div class = "container">
+
+  <div class = "mt-2">
+    <h2>全レビュー　<%= Review.count %>件</h2>
+  </div>
+
+  <%= flash[:notice] %>
+
+  <div class = "row d-flex ">
+    <table class ="table table-hover mt-3">
+      <thead>
+        <tr>
+          <th>ゲームタイトル</th>
+          <th>レビュー本文</th>
+          <th>コメント数</th>
+          <th>公開ステータス</th>
+        </tr>
+      </thead>
+
+      <% @reviews.each do |review| %>
+
+        <tbody>
+          <tr class = "position-relative">
+            <td><%= link_to review.title, admin_review_path(review), class: "stretched-link text-dark" %></td>
+            <td><%= truncate(review.body, length: 20, omission: "......") %></td>
+            <td><%= review.review_comments.count %></td>
+            <td>
+              <% if review.is_active %>
+                <div class = "text-success">公開レビュー</div>
+              <% else %>
+                <div class = "text-danger">非公開レビュー</div>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+
+
+    <div class = "d-flex justify-content-center">
+      <%= paginate @reviews %>
+    </div>
+  </div>
+</div>
+
