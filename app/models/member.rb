@@ -15,6 +15,10 @@ class Member < ApplicationRecord
 
   has_many :review_comments, dependent: :destroy
 
+  scope :alphabetical, -> {order(name: :asc)}
+  scope :recent_login, -> {order(last_sign_in_at: :desc)}
+
+
   def self.looks(search,key_word)
     if search == "perfect_match"
       @member = Member.where("name LIKE?","#{key_word}")

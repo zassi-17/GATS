@@ -9,6 +9,10 @@ class Review < ApplicationRecord
 
   belongs_to :genre
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :rating_count, -> {order(rating: :desc)}
+
   def self.looks(search,key_word)
     if search == "perfect_match"
       @review = Review.where("title LIKE?","#{key_word}")
