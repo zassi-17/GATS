@@ -36,7 +36,9 @@ Rails.application.routes.draw do
 
     resources :genres, except: [:new, :show]
 
-    resources :reviews, except: [:new, :edit, :update]
+    resources :reviews, except: [:new, :edit, :update] do
+      resources :review_comments, only: [:destroy]
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

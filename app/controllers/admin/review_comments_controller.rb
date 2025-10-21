@@ -1,4 +1,4 @@
-class Admin::ReviewCommentController < ApplicationController
+class Admin::ReviewCommentsController < ApplicationController
   before_action :authenticate_admin!
 
   def destroy

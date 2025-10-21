@@ -62,7 +62,7 @@
               </div>
             </div>
 
-            <%= link_to "コメント削除", public_review_review_comment_path(review_comment.review, review_comment),
+            <%= link_to "コメント削除", admin_review_review_comment_path(review_comment.review, review_comment),
             method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger col-3" %>
           </div>
         <% end %>
