@@ -17,7 +17,15 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.where(is_active: true).page(params[:page])
+    if params[:latest]
+      @reviews = Review.latest.where(is_active: true).page(params[:page])
+    elsif params[:old]
+      @reviews = Review.old.where(is_active: true).page(params[:page])
+    elsif params[:rating_count]
+      @reviews = Review.rating_count.where(is_active: true).page(params[:page])
+    else
+      @reviews = Review.where(is_active: true).page(params[:page])
+    end
   end
 
   def show

@@ -1,6 +1,9 @@
 <div class = "container">
   <div class = "mt-2">
     <%= render "public/searches/genre_search_form", review: @review %>
+    <%= link_to "新しい順", public_reviews_path(latest: "true") %>
+    |<%= link_to "古い順", public_reviews_path(old: "true") %>
+    |<%= link_to "評価の高い順", public_reviews_path(rating_count: "true") %>
   </div>
 
   <% @reviews.each do |review| %>

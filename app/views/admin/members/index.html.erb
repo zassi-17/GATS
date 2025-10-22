@@ -2,6 +2,8 @@
 
   <div class = "mt-2">
     <h2>全会員数　<%= Member.count %>アカウント</h2>
+    <%= link_to "五十音順", admin_members_path(alphabetical: "true") %>
+    |<%= link_to "最終ログイン順", admin_members_path(last_login: "true") %>
   </div>
 
 
