@@ -16,7 +16,7 @@ class Member < ApplicationRecord
   has_many :review_comments, dependent: :destroy
 
   scope :alphabetical, -> {order(name: :asc)}
-  scope :recent_login, -> {order(last_sign_in_at: :desc)}
+  scope :last_login, -> {order(current_sign_in_at: :desc)}
 
 
   def self.looks(search,key_word)

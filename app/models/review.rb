@@ -12,6 +12,7 @@ class Review < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :rating_count, -> {order(rating: :desc)}
+  scope :title_alphabetical, -> {order(title: :asc)}
 
   def self.looks(search,key_word)
     if search == "perfect_match"

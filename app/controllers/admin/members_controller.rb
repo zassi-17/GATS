@@ -2,7 +2,13 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @members = Member.page(params[:page])
+    if params[:alphabetical]
+      @members = Member.alphabetical.page(params[:page])
+    elsif params[:last_login]
+      @members = Member.last_login.page(params[:page])
+    else
+      @members = Member.page(params[:page])
+    end
   end
 
   def edit
