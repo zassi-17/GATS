@@ -1,6 +1,6 @@
 <div class = "container">
   <h2><%= @review.member.name %>さんのレビュー</h2>
-    
+
     <div class = "row">
 
       <div class = "col-3 text-center">
@@ -46,6 +46,10 @@
 
     <div class = "row d-flex justify-content-between">
       <div class = "col-12 col-sm-6">
+        <% if flash[:notice] %>
+          <%= flash[:notice] %>
+        <% end %>
+
         <% @review.review_comments.each do |review_comment| %>
           <div class ="card my-3 p-3 border-0"> 
             <div class ="d-flex">

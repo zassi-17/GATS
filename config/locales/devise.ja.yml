@@ -2,8 +2,14 @@ ja:
   devise:
     failure:
       unauthenticated: "ログインまたはアカウント登録が必要です。"
-      invalid: "メールアドレスまたはパスワードが違います。"
+      invalid: "メールアドレスまたはパスワードが空欄です。"
       inactive: "アカウントが有効ではありません。"
+      not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+    sessions:
+      signed_in: ""
+      signed_out: "またのご利用お待ちしております！"
+  errors:
+    messages:
 
   activerecord:
     errors:
