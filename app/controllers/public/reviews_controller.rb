@@ -59,6 +59,7 @@ class Public::ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     review.destroy
+    flash[:notice] = "レビューの削除完了しました！"
     redirect_to public_mypage_path
   end
 

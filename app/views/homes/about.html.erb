@@ -1,5 +1,10 @@
 <div class = "container-fulid ml-3">
-<h1>ようこそGATSへ！</h1>
+
+  <% if flash[:notice] %>
+    <h1><%= flash[:notice] %></h1>
+  <% else %>
+    <h1>ようこそGATSへ！</h1>
+  <% end %>
 
   <div class = "row px-4">
     <div class = "col-5">
