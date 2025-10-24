@@ -1,7 +1,12 @@
 <div class = "container">
   <h1>マイページ</h1>
 
-  <h1><%= flash[:alert] %></h1>
+  <h1><%= flash[:alert] %>
+
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
+  </h1>
   
   <div class = "row mt-3">
 
