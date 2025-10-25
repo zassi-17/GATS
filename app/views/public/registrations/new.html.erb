@@ -1,52 +1,43 @@
 <div class = "container mt-3">
   <h2>アカウント作成</h2>
 
-  <div class = "row d-flex justify-content-center">
-
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
-  
-    <table class="field col-10">
-      <tbody>
-        <tr>
-          <th><%= f.label :アイコン, class: "col-form-label my-3" %></th>
-          <td><%= f.file_field :image, accept: "image/*", class: "my-3" %></td>
-        </tr>
-
-        <tr>
-          <th><%= f.label :アカウント名, class: "col-form-label mb-3" %></th>
-          <td><%= f.text_field :name, class: "form-control mb-3" %></td>
-        </tr>
+ 
+    <div class = "row d-flex justify-content-center">
+      <div class="field col-12 col-sm-7">
+          <%= f.label :アイコン, class: "col-form-label my-3" %>
+          <%= f.file_field :image, accept: "image/*", class: "my-3" %>
         
-        <tr>
-          <th><%= f.label :自己紹介文, class: "col-form-label mb-3" %></th>
-          <td><%= f.text_area :introduction, rows: 3, class: "form-control mb-3" %></td>
-        </tr>
 
-        <tr>
-          <th><%= f.label :メールアドレス, class: "col-form-label mb-3" %></th>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mb-3" %></td>
-        </tr>
+        
+          <%= f.label :アカウント名, class: "col-form-label mb-3" %>
+          <%= f.text_field :name, class: "form-control mb-3" %>
+        
+        
+        
+          <%= f.label :自己紹介文, class: "col-form-label mb-3" %>
+          <%= f.text_area :introduction, rows: 3, class: "form-control mb-3" %>
 
-        <tr>
-          <th><%= f.label :好きなゲームソフトをひとつ挙げてください, class: "col-form-label mb-3" %></th>
-          <td><%= f.text_field :favorite_game, class: "form-control mb-3" %></td>
-        </tr>
+          <%= f.label :メールアドレス, class: "col-form-label mb-3" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mb-3" %>
+        
 
-        <tr>
-          <th><%= f.label :パスワード, class: "col-form-label mb-3" %>
+          <%= f.label :好きなゲームソフトをひとつ挙げてください, class: "col-form-label mb-3" %>
+          <%= f.text_field :favorite_game, class: "form-control mb-3" %>
+
+        
+          <%= f.label :パスワード, class: "col-form-label mb-3" %>
                 <% if @minimum_password_length %>
                 <em class= "col-form-label mr-4 pr-2">(<%= @minimum_password_length %> 文字以上)</em>
                 <% end %></th>
-          <td><%= f.password_field :password, autocomplete: "new-password", class: "form-control mb-3" %></td>
-        </tr>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control mb-3" %>
   
-        <tr>
-          <th><%= f.label :パスワード（確認用）, class: "col-form-label mb-3" %></th>
-          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mb-3" %></td>
-        </tr>
-      </tbody>
-    </table>
+        
+          <%= f.label :パスワード（確認用）, class: "col-form-label mb-3" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mb-3" %>
+      </div>
+    </div>
 
     <div class="actions text-center mt-5 mb-2 ">
       <%= f.submit "アカウント作成", class: "px-4 btn btn-lg btn-primary" %>

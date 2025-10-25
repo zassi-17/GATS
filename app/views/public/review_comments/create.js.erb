@@ -1,3 +1,8 @@
-$('.comment-textarea').val(""); #コメントフォームを空にする
-$('#review-comments-counter').html("<%= j(render 'public/review_comments/counter', review: @review) %>"); #コメントカウントを更新する
-$('#review-comments-index').html("<%= j(render 'public/review_comments/index', review: @review, review_comment: @review_comment) %>"); #コメント一覧を更新する
+//コメントフォームを空にする
+$('.comment-textarea').val(""); 
+//エラーメッセージを空にする
+$("#comments-error").html("");
+//コメントカウントを更新する
+$('#review-comments-counter').html("<%= j(render 'public/review_comments/counter', review: @review) %>"); 
+//コメント一覧を更新する
+$('#review-comments-index').html("<%= j(render 'public/review_comments/index', review: @review, review_comment: @review_comment) %>"); 
