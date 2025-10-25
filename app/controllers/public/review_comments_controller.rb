@@ -7,7 +7,7 @@ class Public::ReviewCommentsController < ApplicationController
     @review_comment.review_id = @review.id
     if @review_comment.save
     else
-      flash.now[:alert] = "コメントを入力してください"
+      render :error
       @member = @review.member
     end
   end

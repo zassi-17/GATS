@@ -48,8 +48,8 @@
   
     <div class = "border-bottom mt-3">
       <h4 id= "review-comments-counter"><%= render "public/review_comments/counter", review: @review, review_comment: @review_comment %></h4>
-
-      <h4><%= flash.now[:alert] %></h4>
+      
+      <h4 id= "comments-error"><%= render "public/review_comments/error_messages", review_comment: @review_comment %></h4>
     </div>
 
   <div class = "row d-flex justify-content-between">

@@ -1,0 +1,8 @@
+<% if review_comment.errors.any? %>
+  <%= review_comment.errors.count %>件のエラーが発生しました。
+    <ul>
+      <% review_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
