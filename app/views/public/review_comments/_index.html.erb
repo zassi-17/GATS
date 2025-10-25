@@ -1,0 +1,22 @@
+<% review.review_comments.each do |review_comment| %>
+  <div class ="card my-3 p-3 border-0"> 
+    <div class ="d-flex">
+
+      <div class ="d-flex flex-column align-items-center mr-3">
+        <%= link_to public_member_path(review_comment.member) do %>
+          <%= image_tag review_comment.member.image, size:"50x50", class: "rounded-circle" %>
+        <% end %>
+        <%= review_comment.member.name %>
+      </div>
+            
+      <div class = "text-break">
+        <%= review_comment.body %>
+      </div>
+    </div>
+
+    <% if current_member == review_comment.member %>
+      <%= link_to "コメント削除", public_review_review_comment_path(review_comment.review, review_comment),
+      method: :delete, data: {confirm: "本当に削除しますか？"}, remote: true, class: "btn btn-sm btn-danger col-3" %>
+    <% end %>
+  </div>
+<% end %>

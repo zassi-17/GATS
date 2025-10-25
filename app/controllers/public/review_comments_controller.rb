@@ -6,19 +6,17 @@ class Public::ReviewCommentsController < ApplicationController
     @review_comment = current_member.review_comments.new(review_comment_params)
     @review_comment.review_id = @review.id
     if @review_comment.save
-      redirect_to public_review_path(@review)
     else
+      render :error
       @member = @review.member
-      flash.now[:alert] = "コメントを入力してださい"
-      render 'public/reviews/show'
     end
   end
 
   def destroy
-    review_comment = ReviewComment.find(params[:id])
-    current_member == review_comment.member
-    review_comment.destroy
-    redirect_to public_review_path(params[:review_id])
+    @review_comment = ReviewComment.find(params[:id])
+    current_member == @review_comment.member
+    @review = @review_comment.review
+    @review_comment.destroy
   end
 
 

@@ -23,6 +23,8 @@ ja:
         name: "ジャンル名"
       admin:
         email: メールアドレス
+      review_comment:
+        body: コメント
 
   errors:
     format: "%{attribute}%{message}"
