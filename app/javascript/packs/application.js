@@ -22,3 +22,12 @@ window.raty = function(elem,opt) {
   raty.init();
   return raty;
 }
+
+document.addEventListener('turbolinks:load', function() {
+  $('#back a').on('click',function(event){
+    $('html, body, main').animate({
+      scrollTop:0
+    }, 800);
+    event.preventDefault();
+  });
+});
