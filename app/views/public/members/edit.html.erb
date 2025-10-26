@@ -2,46 +2,38 @@
   <h2>プロフィール編集フォーム</h2>
 
     <% if @member.errors.any? %>
-      <%= @member.errors.count %>件のエラーが発生しました。
-        <ul>
-          <% @member.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+      <h3 class = "alert alert-danger">
+        <%= @member.errors.count %>件のエラーが発生しました。
+          <ul>
+            <% @member.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+      </h3>
     <% end %>
 
   <%= form_with model: [:public,@member], local: true do |f| %>
   
   <div class = "row d-flex justify-content-center">
   
-    <table class="field col-7">
-      <tbody>
-        <tr>
-          <th><%= f.label :image, "アイコン", class: "col-form-label my-3" %></th>
-          <td><%= f.file_field :image, accept: "image/*", class: "my-3" %></yd>
-        </tr>
+    <div class="field col-12 col-sm-7">
+      <div>
+        <%= f.label :image, "アイコン", class: "col-form-label my-3" %>
+        <%= f.file_field :image, accept: "image/*", class: "mb-3" %>
+      </div>
+      
+      <%= f.label :name, "アカウント名", class: "col-form-label mb-1" %>
+      <%= f.text_field :name, class: "form-control mb-3" %>
 
-        <tr>
-          <th><%= f.label :name, "アカウント名", class: "col-form-label mb-3" %></th>
-          <td><%= f.text_field :name, class: "form-control mb-3" %></td>
-        </tr>
+      <%= f.label :introduction, "自己紹介", class: "col-form-label mb-1" %>
+      <%= f.text_area :introduction, rows: 5,class: "form-control mb-3" %>
 
-        <tr>
-          <th><%= f.label :introduction, "自己紹介", class: "col-form-label mb-3" %></th>
-          <td><%= f.text_area :introduction, rows: 5,class: "form-control mb-3" %></td>
-        </tr>
+      <%= f.label :email, "メールアドレス", class: "col-form-label mb-1" %>
+      <%= f.email_field :email, class: "form-control mb-3" %>
 
-        <tr>
-          <th><%= f.label :email, "メールアドレス", class: "col-form-label mb-3" %></th>
-          <td><%= f.email_field :email, class: "form-control mb-3" %></td>
-        </tr>
-
-        <tr>
-          <th><%= f.label :favorite_game, "好きなゲームソフト", class: "col-form-label mb-3" %></th>
-          <td><%= f.text_field :favorite_game, class: "form-control mb-3" %></td>
-        <tr>
-      </tbody>
-    </table>
+      <%= f.label :favorite_game, "好きなゲームソフト", class: "col-form-label mb-1" %>
+      <%= f.text_field :favorite_game, class: "form-control mb-3" %>
+    </div>
   </div>
 
   <div class = "text-center">

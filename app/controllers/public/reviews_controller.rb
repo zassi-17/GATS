@@ -50,6 +50,7 @@ class Public::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      flash[:notice] = "レビュー編集完了しました！"
       redirect_to public_review_path(@review.id)
     else
       render :edit

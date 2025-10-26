@@ -3,9 +3,11 @@
   <h2>ログインフォーム</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
+  
     <% if flash[:alert] %>
-      <%= flash[:alert] %>
+      <div class = "alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
     <% end %>
     
   <div class = "row d-flex justify-content-center">

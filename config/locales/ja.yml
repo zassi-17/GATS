@@ -8,8 +8,8 @@ ja:
     attributes:
       member:
         image: "アイコン"
-        name: "名前"
-        introduction: "自己紹介"
+        name: "アカウント名"
+        introduction: "自己紹介文"
         favorite_game: "好きなゲームソフト"
         is_active: "会員ステータス"
         email: "メールアドレス"
@@ -45,7 +45,7 @@ ja:
       model_invalid: 'バリデーションに失敗しました: %{errors}'
       not_a_number: は数値で入力してください
       not_an_integer: は整数で入力してください
-      not_saved: "以下の項目に空欄があります"
+      not_saved: "以下の項目に不備があります"
       odd: は奇数にしてください
       other_than: は%{count}以外の値にしてください
       present: は入力しないでください

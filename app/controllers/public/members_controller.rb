@@ -14,6 +14,7 @@ class Public::MembersController < ApplicationController
   def update
     @member = Member.find(params[:id])
     if @member.update(member_params)
+      flash[:notice] = "プロフィール編集完了しました！"
       redirect_to public_mypage_path
     else
       render :edit
@@ -22,6 +23,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @reviews = @member.reviews
   end
 
   def withdraw
@@ -44,8 +46,8 @@ class Public::MembersController < ApplicationController
   def correct_member
     @member = Member.find(params[:id])
     unless @member == current_member
-    redirect_to public_mypage_path(@member)
     flash[:alert] = "他会員のプロフィール編集は禁止です"
+    redirect_to public_mypage_path(@member)
     end
   end
 

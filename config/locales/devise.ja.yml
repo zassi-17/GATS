@@ -8,6 +8,8 @@ ja:
     sessions:
       signed_in: ""
       signed_out: "またのご利用お待ちしております！"
+    registrations:
+      signed_up: "アカウント登録しました！さっそくレビューを投稿してみましょう！"
 
   activerecord:
     errors:

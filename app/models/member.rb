@@ -7,7 +7,7 @@ class Member < ApplicationRecord
   has_one_attached :image
 
   validates :image, presence: true
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
   validates :introduction, presence: true
   validates :favorite_game, presence: true
 

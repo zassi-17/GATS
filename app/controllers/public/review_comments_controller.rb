@@ -6,6 +6,7 @@ class Public::ReviewCommentsController < ApplicationController
     @review_comment = current_member.review_comments.new(review_comment_params)
     @review_comment.review_id = @review.id
     if @review_comment.save
+      render :create
     else
       render :error
       @member = @review.member
@@ -14,9 +15,13 @@ class Public::ReviewCommentsController < ApplicationController
 
   def destroy
     @review_comment = ReviewComment.find(params[:id])
-    current_member == @review_comment.member
-    @review = @review_comment.review
-    @review_comment.destroy
+    if current_member == @review_comment.member
+      @review = @review_comment.review
+      @review_comment.destroy
+      render :destroy
+    else
+      render 'review/show'
+    end
   end
 
 
