@@ -1,11 +1,15 @@
 <div class = "container mt-3">
 
-<h2>管理者ログイン</h2>
-
+  <h2>管理者ログイン</h2>
+  
+  <!ログイン失敗メッセージ>
   <% if flash[:alert] %>
-    <%= flash[:alert] %>
+    <div class = "alert alert-danger">
+      <%= flash[:alert] %>
+    </div>
   <% end %>
 
+  <!ログインフォーム>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     
     <div class = "row d-flex justify-content-center">
@@ -22,8 +26,7 @@
         <%= f.submit "ログイン", class: " px-4 mb-2 btn btn-lg btn-success" %>
       </div>
   <% end %>
-
-  <div class="text-center mt-5">
-    <%= render "admin/shared/links" %>
-  </div>
+   
+    <!現在、使用しないためコメントアウト>
+    <%#= render "admin/shared/links" %>
 </div>

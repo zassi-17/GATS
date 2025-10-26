@@ -3,11 +3,11 @@ class Admin::GenresController < ApplicationController
 
   def index
     @genre = Genre.new
-    @genres = Genre.all
+    @genres = Genre.page(params[:page])
   end
 
   def create
-    @genres = Genre.all
+    @genres = Genre.page(params[:page])
     @genre = Genre.new(genre_params)
     if @genre.save
       flash[:notice] = "新規登録完了しました！"

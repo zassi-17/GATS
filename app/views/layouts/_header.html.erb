@@ -1,56 +1,60 @@
-<div class="container-fluid  bg-color header_color" style="height: 100px;">
-  <div class="row h-100 d-flex align-items-center">
+<div class="container-fluid  bg-color header_color">
+  <div class="row d-flex flex-wrap justify-content-between align-items-center">
 
-
+    <!管理者でログイン時のヘッダー>
     <% if current_admin %>
 
-      <div class = "col-8">
+      <div class = "col-12 col-md-2 d-flex my-2 justify-content-center">
         <%= link_to admin_root_path do %>
           <%= image_tag "GATS_logo.png", size: "150x90" %>
         <% end %>
       </div>
 
-
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn header_btn_color mx-1" %>
-      <%= link_to "ジャンル登録", admin_genres_path, class: "btn header_btn_color mx-1" %>
-      <%= link_to "レビュー管理", admin_reviews_path, class: "btn header_btn_color mx-1" %>
-
-
+      <div class = "col-12 col-md-6 d-flex justify-content-end my-2">
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn header_btn_color mx-1" %>
+        <%= link_to "ジャンル登録", admin_genres_path, class: "btn header_btn_color mx-1" %>
+        <%= link_to "レビュー管理", admin_reviews_path, class: "btn header_btn_color mx-1" %>
+      </div>
+    <!会員でログイン時のヘッダー>
     <% elsif current_member %>
 
-      <div class = "col-2">
+      <div class = "col-12 col-md-2 d-flex my-2 justify-content-center">
         <%= link_to root_path do %>
           <%= image_tag "GATS_logo.png", size: "150x90" %>
         <% end %>
       </div>
 
-      <div class = "col-6">
+      <div class = "col-12 col-md-4">
         <%= render 'public/searches/search_form' %>
       </div>
 
-      <%= link_to "投稿一覧", public_reviews_path, class: "btn header_btn_color mx-1" %>
-      <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn header_btn_color mx-1" %>
-      <%= link_to "マイページ", public_mypage_path, class: "btn header_btn_color mx-1" %>
-      <%= link_to "新規投稿", new_public_review_path, class: "btn header_btn_color mx-1" %>
+      <div class = "col-12 col-md-6 d-flex justify-content-end my-2">
+        <%= link_to "投稿一覧", public_reviews_path, class: "btn header_btn_color mx-1" %>
+        <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn header_btn_color mx-1" %>
+        <%= link_to "マイページ", public_mypage_path, class: "btn header_btn_color mx-1" %>
+        <%= link_to "新規投稿", new_public_review_path, class: "btn header_btn_color mx-1" %>
+      </div>
 
-    <% else %>
+    <!非ログイン時のヘッダー>
+    <% else %> 
 
-      <div class = "col-2">
+      <div class = "col-12 col-md-2 d-flex my-2 justify-content-center">
         <%= link_to root_path do %>
-          <%= image_tag "GATS_logo.png", size: "150x90" %>
+          <%= image_tag "GATS_logo.png", size: "130x90" %>
         <% end %>
       </div>
 
-      <div class = "col-6">
+      <div class = "col-12 col-md-4">
         <%= render 'public/searches/search_form' %>
       </div>
 
-      <%= link_to "投稿一覧", public_reviews_path, class: "btn header_btn_color mx-1" %>
-      <%= link_to "About", about_path, class: "btn header_btn_color mx-1" %>
-      <%= link_to "ログイン", new_member_session_path, class: "btn header_btn_color mx-1" %>
-      <%= link_to "アカウント作成", new_member_registration_path, class: "btn header_btn_color mx-1" %>
+      <div class = "col-12 col-md-6 d-flex justify-content-end my-2">
+        <%= link_to "投稿一覧", public_reviews_path, class: "btn header_btn_color mx-1" %>
+        <%= link_to "About", about_path, class: "btn header_btn_color mx-1" %>
+        <%= link_to "ログイン", new_member_session_path, class: "btn header_btn_color mx-1" %>
+        <%= link_to "アカウント作成", new_member_registration_path, class: "btn header_btn_color mx-1" %>
+      </div>
 
     <% end %>
-    
   </div>
 </div>
