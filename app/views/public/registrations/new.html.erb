@@ -6,36 +6,32 @@
  
     <div class = "row d-flex justify-content-center">
       <div class="field col-12 col-sm-7">
+        <div>
           <%= f.label :アイコン, class: "col-form-label my-3" %>
-          <%= f.file_field :image, accept: "image/*", class: "my-3" %>
+          <%= f.file_field :image, accept: "image/*", class: "mb-3" %>
+        </div>        
+        
+          <%= f.label :アカウント名, class: "col-form-label mb-1" %>
+          <%= f.text_field :name, placeholder: "アカウント名", class: "form-control mb-3 col-6" %>
+        
+          <%= f.label :自己紹介文, class: "col-form-label mb-1" %>
+          <%= f.text_area :introduction, rows: 3, placeholder: "好きなゲームジャンルなど記入してください", class: "form-control mb-3" %>
+
+          <%= f.label :メールアドレス, class: "col-form-label mb-1" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "本サイトで一度登録したメールアドレスは使用できません",class: "form-control mb-3" %>
         
 
-        
-          <%= f.label :アカウント名, class: "col-form-label mb-3" %>
-          <%= f.text_field :name, class: "form-control mb-3" %>
-        
-        
-        
-          <%= f.label :自己紹介文, class: "col-form-label mb-3" %>
-          <%= f.text_area :introduction, rows: 3, class: "form-control mb-3" %>
+          <%= f.label :好きなゲームソフト, class: "col-form-label mb-1" %>
+          <%= f.text_field :favorite_game, placeholder: "最も好きなゲームソフトを挙げてください", class: "form-control mb-3" %>
 
-          <%= f.label :メールアドレス, class: "col-form-label mb-3" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mb-3" %>
-        
-
-          <%= f.label :好きなゲームソフトをひとつ挙げてください, class: "col-form-label mb-3" %>
-          <%= f.text_field :favorite_game, class: "form-control mb-3" %>
-
-        
-          <%= f.label :パスワード, class: "col-form-label mb-3" %>
+          <%= f.label :パスワード, class: "col-form-label mb-1" %>
                 <% if @minimum_password_length %>
                 <em class= "col-form-label mr-4 pr-2">(<%= @minimum_password_length %> 文字以上)</em>
                 <% end %></th>
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control mb-3" %>
-  
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control mb-3 col-6" %>
         
-          <%= f.label :パスワード（確認用）, class: "col-form-label mb-3" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mb-3" %>
+          <%= f.label :パスワード（確認用）, class: "col-form-label mb-1" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mb-3 col-6" %>
       </div>
     </div>
 
