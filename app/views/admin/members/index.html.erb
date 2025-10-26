@@ -1,14 +1,22 @@
 <div class = "container" >
-
+  
+  <!会員数とソートリンク>
   <div class = "mt-2">
     <h2>全会員数　<%= Member.count %>アカウント</h2>
     <%= link_to "五十音順", admin_members_path(alphabetical: "true") %>
     |<%= link_to "最終ログイン順", admin_members_path(last_login: "true") %>
   </div>
 
+    <!編集完了しました！>
+    <% if flash[:notice] %>
+      <div class = "alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 
+  <!会員一覧>
   <div class = "row d-flex ">
-    <table class ="table table-hover mt-3">
+    <table class ="table table-hover table-secondary border mt-3">
       <thead>
         <tr>
           <th>アカウント名</th>
@@ -25,7 +33,7 @@
           <td><%= member.email %></td>
           <td>
             <% if member.is_active %>
-              <div>有効会員</div>
+              <div class = "text-primary">有効会員</div>
             <% else %>
               <div>退会会員</div>
             <% end %>
@@ -36,7 +44,8 @@
     </table>
   </div>
 
-   <div class = "d-flex justify-content-center">
+  <!ページネーション>
+  <div class = "d-flex justify-content-center">
     <%= paginate @members %>
   </div>
 </div>

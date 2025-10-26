@@ -1,22 +1,31 @@
 <div class = "container">
 
+  <!タイトル・バリデーションエラーメッセージ・ジャンル登録メッセージ>
   <div class = "mt-2">
     <h2>ジャンル登録・一覧</h2>
 
     <% if @genre.errors.any? %>
-      <%= @genre.errors.count %>件のエラーが発生しました。
-        <ul>
-          <% @genre.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+      <div class = "alert alert-danger">
+        <%= @genre.errors.count %>件のエラーが発生しました。
+          <ul>
+            <% @genre.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+      </div>
     <% end %>
-
+  
+    <% if flash[:notice] %>
+      <div class = "alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
   </div>
 
   <div class = "row d-flex justify-content-between">
 
-    <div class = "col-12 col-sm-6">
+    <!ジャンル投稿フォーム>
+    <div class = "col-12 col-md-5">
       <div class="field col-10 mt-4">
         <%= form_with model:[:admin,@genre], local: true do |f| %>
           <%= f.label "ジャンル名", class: "col-form-label mb-2" %>
@@ -26,9 +35,9 @@
       </div>
     </div>
 
-
-    <div class = "col-12 col-sm-6">
-      <table class = "table table-hover">
+    <!ジャンル一覧>
+    <div class = "col-12 col-md-7">
+      <table class = "table table-hover table-secondary ">
         <thead>
           <tr>
             <th>ジャンル名</th>
