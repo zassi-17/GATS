@@ -1,9 +1,12 @@
 <div class = "container">
   <div class = "row mt-2 d-flex justify-content-between align-items-end flex-column flex-md-row">
+
+    <!ジャンル検索フォーム>
     <div class = "mb-2 ml-3">
       <%= render "public/searches/genre_search_form", review: @review %>
     </div>
 
+    <!ソートリンク>
     <div class = "mr-3">
       <%= link_to "新しい順", public_reviews_path(latest: "true") %>
       |<%= link_to "古い順", public_reviews_path(old: "true") %>
@@ -11,11 +14,12 @@
     </div>
   </div>
 
+  <!全レビュー一覧>
   <% @reviews.each do |review| %>
     <%= render 'review_list', review: review %>
   <% end %>
 
-
+  <!ページネーション>
   <div class = "d-flex justify-content-center">
     <%= paginate @reviews %>
   </div>

@@ -23,7 +23,7 @@ window.raty = function(elem,opt) {
   return raty;
 }
 
-document.addEventListener('turbolinks:load', function() {
+$(document).on('turbolinks:load', function() {
   $('#back a').on('click',function(event){
     $('html, body, main').animate({
       scrollTop:0

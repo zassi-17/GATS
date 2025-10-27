@@ -3,8 +3,11 @@
   <!会員数とソートリンク>
   <div class = "mt-2">
     <h2>全会員数　<%= Member.count %>アカウント</h2>
-    <%= link_to "五十音順", admin_members_path(alphabetical: "true") %>
-    |<%= link_to "最終ログイン順", admin_members_path(last_login: "true") %>
+    
+    <div class = "d-flex justify-content-end align-items-end">
+      <%= link_to "五十音順", admin_members_path(alphabetical: "true") %>
+      |<%= link_to "最終ログイン順", admin_members_path(last_login: "true") %>
+    </div>
   </div>
 
     <!編集完了しました！>
@@ -16,7 +19,7 @@
 
   <!会員一覧>
   <div class = "row d-flex ">
-    <table class ="table table-hover table-secondary border mt-3">
+    <table class ="table table-hover table-secondary border mt-1">
       <thead>
         <tr>
           <th>アカウント名</th>
