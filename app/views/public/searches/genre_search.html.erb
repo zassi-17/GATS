@@ -1,5 +1,11 @@
 <div class = "container">
-  <h2>ジャンル：”<%= @genre.name %>”のレビュー</h2>
+  <h2>ジャンル：
+    <% if @genre.nil? %>
+      すべてのレビュー
+    <% else %>
+      ”<%= @genre.name %>”のレビュー
+    <% end %>
+  </h2>
   
   <% @reviews.each do |review| %>
     <%= render 'public/reviews/review_list', review: review %>
