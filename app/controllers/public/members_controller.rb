@@ -23,7 +23,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @reviews = @member.reviews
+    @reviews = @member.reviews.where(is_active: true)
   end
 
   def withdraw

@@ -1,11 +1,14 @@
 <div class = "container">
   <h1>マイページ</h1>
 
-  <h2> 
+  <h2> <!他会員のプロフィールを編集を禁止するメッセージ>
     <%if flash[:alert] %>
-      <div class = "alert alert-danger"><%= flash[:alert] %></div>
+      <div class = "alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
     <% end %>
 
+    <!プロフィール編集完了メッセージ>
     <% if flash[:notice] %>
       <div class = "alert alert-success">
         <%= flash[:notice] %>
@@ -13,19 +16,22 @@
     <% end %>
   </h2>
   
+  <!自分のプロフィール>
   <div class = "row mt-3">
-
-  <%= render 'member_detail', member:@member %>
+    <%= render 'member_detail', member:@member %>
   </div>
 
+  <!プロフィール編集フォームへ遷移するボタン>
   <div class = "my-3 text-center">
     <%= link_to "プロフィール編集", edit_public_member_path(@member), class: "btn btn-success px-3" %>
   </div>
 
+  <!自分が投稿した公開レビュー一覧>
   <% @reviews.each do |review| %>
     <%= render 'public/reviews/review_list', review: review %>
   <% end %>
 
+  <!ページネーション>
   <div class = "d-flex justify-content-center"> 
     <%= paginate @reviews %>
   </div>
