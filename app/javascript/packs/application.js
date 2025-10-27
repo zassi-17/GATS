@@ -17,12 +17,14 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+//window.ratyを呼べば星評価が簡単に作れるようにしている
 window.raty = function(elem,opt) {
   let raty =  new Raty(elem,opt)
   raty.init();
   return raty;
 }
 
+//トップへ戻るボタンをクリックしたときにスクロールするようにしている
 $(document).on('turbolinks:load', function() {
   $('#back a').on('click',function(event){
     $('html, body, main').animate({

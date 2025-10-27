@@ -3,22 +3,25 @@
   <div class = "my-3 col-6 col-lg-4">
     <%= render "public/searches/genre_search_form", review: @review %>
   </div>
+
   <div class = "row">
 
+    <!レビューの詳細>
     <div class = "col-12 col-lg-3">
       <%= link_to public_member_path(@member) do %>
         <%= image_tag @member.image, size:"200x200", class: "rounded-circle" %>
       <% end %>
 
-                    <% if @review.is_active %>
-                <h2 class = "text-success">公開レビュー</h2>
-              <% else %>
-                <h2 class = "text-danger">非公開レビュー</h2>
-              <% end %>
+      <% if @review.is_active %>
+        <h2 class = "text-success">公開レビュー</h2>
+      <% else %>
+        <h2 class = "text-danger">非公開レビュー</h2>
+      <% end %>
     </div>
   
     <div class = "col-12 col-lg-9 mt-0 mt-lg-5">
 
+      <!レビュー編集完了メッセージ>
       <% if flash[:notice] %>
         <div class = "alert alert-success">
           <h2><%= flash[:notice] %></h2>
@@ -52,13 +55,14 @@
     </div>
   </div>
 
+    <!自身が投稿したレビューのみ編集ボタンが表示される>
     <div class = "text-center mt-4">
       <% if @review.member == current_member %>
         <%= link_to "レビュー編集", edit_public_review_path(@review), class: "btn btn-success px-4" %>
       <% end %>
     </div>
 
-  
+    <!コメント欄>
     <div class = "border-bottom mt-3">
       <h4 id= "review-comments-counter"><%= render "public/review_comments/counter", review: @review, review_comment: @review_comment %></h4>
       

@@ -35,9 +35,9 @@
           </tbody>
         </table>
         
-        <!レビュー削除ボタン>
         <div class = "mt-4">
-          <%= link_to "レビュー削除", admin_review_path(@review), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger px-4" %>
+          <%= link_to "レビュー削除", admin_review_path(@review), method: :delete,
+           data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger px-4" %>
         </div>
       </div>
     </div>
@@ -48,6 +48,8 @@
     </div>
 
     <div class = "row d-flex justify-content-between">
+
+      <!レビューの削除完了メッセージ>
       <div class = "col-12">
         <% if flash[:notice] %>
           <div class= "alert alert-success">
@@ -55,6 +57,7 @@
           </div>
         <% end %>
 
+        <!コメント一覧>
         <% @review.review_comments.each do |review_comment| %>
           <div class ="card my-3 p-3 bg-dark text-white comment_index_boder " > 
             <div class ="d-flex">

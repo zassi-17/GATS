@@ -11,6 +11,7 @@
       <%= f.collection_select :genre_id, Genre.all, :id, :name,{ prompt: '--選択してください--' }, { class: "form-control" } %>
     </div>
 
+    <!新規レビュー時は星評価をつけることが可能、１度登録したら編集はできない>
     <% if review.id.nil? %>
       <div class = "form-group mt-3" id= "star">
         <%= f.label :rating, "評価" %>
