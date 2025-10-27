@@ -12,7 +12,11 @@ class Public::SearchesController < ApplicationController
   end
 
   def genre_search
-    @genre = Genre.find(params[:genre_id])
-    @reviews = @genre.reviews.where(is_active: true).page(params[:page])
+    @genre = Genre.find_by(id: params[:genre_id])
+    if @genre.nil?
+      @reviews = Review.where(is_active: true).page(params[:page])
+    else
+      @reviews = @genre.reviews.where(is_active: true).page(params[:page])
+    end
   end
 end
