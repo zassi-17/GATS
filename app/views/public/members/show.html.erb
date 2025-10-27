@@ -1,8 +1,11 @@
 <div class = "container mt-4">
+
+  <!会員のプロフィール>
   <div class = "row mb-2">
-<%= render 'member_detail', member:@member %>
+    <%= render 'member_detail', member:@member %>
   </div>
 
+  <!会員の公開レビュー一覧>
   <% @reviews.each do |review| %>
     <%= render 'public/reviews/review_list', review: review %>
   <% end %>
