@@ -15,10 +15,14 @@ class Member < ApplicationRecord
 
   has_many :review_comments, dependent: :destroy
 
+  #ソート機能のメソッド
+  #五十音順
   scope :alphabetical, -> {order(name: :asc)}
+  #最終ログイン順
   scope :last_login, -> {order(current_sign_in_at: :desc)}
 
 
+  #アカウント名の一致検索メソッド
   def self.looks(search,key_word)
     if search == "perfect_match"
       @member = Member.where("name LIKE?","#{key_word}")

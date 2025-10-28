@@ -1,4 +1,5 @@
 <div class = "container">
+  <!モデル選択フォームでユーザーを選んだ場合の会員一覧>
   <% if @model == "Member" %>
     <h2>ユーザー検索結果：キーワード"<%= @key_word %>"</h2>
       <% @members.each do |member| %>
@@ -42,7 +43,7 @@
     <div class = "d-flex justify-content-center">
       <%= paginate @members %>
     </div>
-
+  <!モデル選択フォームでレビュータイトル選んだ場合のレビュー一覧>
   <% else %>
     <h2>ゲームソフト検索結果：キーワード"<%= @key_word %>"</h2>
       <% @reviews.each do |review| %>
