@@ -36,6 +36,16 @@ test = Member.find_or_create_by!(email: "test@example.com") do |member|
   member.is_active = true
 end
 
+bee = Member.find_or_create_by!(email: "bee@example.com") do |member|
+  member.name = "Hachinosu"
+  member.password = "#{ENV['SECRET_KEY']}"
+  member.password_confirmation = "#{ENV['SECRET_KEY']}" 
+  member.introduction = "トロフィーコンプリートや全アイテム収集を達成することがゲームをプレイする原動力になっています！" 
+  member.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.png"), filename:"sample-user4.png")
+  member.favorite_game = "戦え！！BEEST～あの山の頂へ～"
+  member.is_active = true
+end
+
 
 
 
@@ -57,32 +67,133 @@ genre_rpg = Genre.find_or_create_by!(name: "ロールプレイングゲーム")
 
 
 
-review_winter =Review.find_or_create_by!(title: "みんなの冬休み2") do |review|
+review_winter = Review.find_or_create_by!(title: "みんなの冬休み2") do |review|
   review.member = zassi
-  review.body = "単刀直入に感想を述べると懐かしい感覚になるゲームでした。このシリーズ定番の釣った魚で戦わせる魚相撲は各魚のパワーバランスの調整がよく、戦略性が問われると思います。続編期待してます！"
+  review.body = "単刀直入に感想を述べると懐かしい感覚になるゲームでした。このシリーズ定番の釣った魚で戦わせる魚相撲は各魚のパワーバランスの調整がよく、
+  戦略性が問われると思います。続編期待してます！"
   review.genre = genre_adventure
-  review.rating = "4"
+  review.rating = 4
   review.is_active = true
 end
 
 Review.find_or_create_by!(title: "ザ・スピードレース") do |review|
   review.member = razer
-  review.body = "オンライン対戦での白熱したバトルが最高だった。また、コースや天候によって最適なセッティングを考える過程は、リアルレーシングゲームらしい奥深さを感じさせる。総合的に爽快感と緊張感で楽しいゲームです。"
+  review.body = "オンライン対戦での白熱したバトルが最高だった。また、コースや天候によって最適なセッティングを考える過程は、
+  リアルレーシングゲームらしい奥深さを感じさせる。総合的に爽快感と緊張感で楽しいゲームです。"
   review.genre = genre_race
-  review.rating = "3"
+  review.rating = 3
+  review.is_active = true
+end
+
+review_fantasy = Review.find_or_create_by!(title: "最初の現実10") do |review|
+  review.member = test
+  review.body = "王道ファンタジーの要素をしっかりと踏襲しつつ、新しい戦闘スタイルで飽きの来ないバトルが楽しめる。ストーリーは感動要素多めでした。
+  クリア後に出現するダンジョンは今までプレイしたゲームの中で一番、難易度の高いダンジョンでした。"
+  review.genre = genre_rpg
+  review.rating = 3.5
+  review.is_active = true
+end
+
+Review.find_or_create_by!(title: "火星侵攻軍6") do |review|
+  review.member = zassi
+  review.body = "過去一番でやりこんだゲームといっても過言ではない。なぜなら前作から敵の種類も格段に増え、
+  CPUの攻撃手段が多様化したことで力押しでは勝てず戦略を考えることが楽しくなった。終盤の雰囲気的には続編が出ないかもしれないが続編待ってます。"
+  review.genre = genre_action
+  review.rating = 4.5
+  review.is_active = true
+end
+
+Review.find_or_create_by!(title: "墓場から何か声がしない？") do |review|
+  review.member = razer
+  review.body = "夜にプレイして寝れなくなりました。"
+  review.genre = genre_horror
+  review.rating = 1
+  review.is_active = true
+end
+
+review_dance =Review.find_or_create_by!(title: "リズムに乗ってダンス・イン・ヘブン") do |review|
+  review.member = bee
+  review.body = "頭に残るＢＧＭが名曲でした。"
+  review.genre = genre_rhythm
+  review.rating = 2.5
+  review.is_active = true
+end
+
+Review.find_or_create_by!(title: "大南極大陸の事件Ｒ") do |review|
+  review.member = bee
+  review.body = "このシリーズあるあるだけど５章の事件から伏線が回収されていき、ワクワクする展開が最高です。"
+  review.genre = genre_mystery
+  review.rating = 5
+  review.is_active = true
+end
+
+review_hyper =Review.find_or_create_by!(title: "ハイパーマイク・サンセット") do |review|
+  review.member = zassi
+  review.body = "近所の同級生に借りて夜中までプレイしてました。シンプルながら奥の深いゲームだと思います。"
+  review.genre = genre_action
+  review.rating = 4.5
+  review.is_active = true
+end
+
+Review.find_or_create_by!(title: "家具を作ろう　level2") do |review|
+  review.member = test
+  review.body = "地味なゲームだけど奥が深い。"
+  review.genre = genre_simulation
+  review.rating = 2
+  review.is_active = true
+end
+
+Review.find_or_create_by!(title: "パイナップルハンター・リターンズ") do |review|
+  review.member = test
+  review.body = "発売まで長いこと待たされただけあって、瑞々しい。"
+  review.genre = genre_action
+  review.rating = 4.5
   review.is_active = true
 end
 
 
-review_comment_first = ReviewComment.find_or_create_by(body: "参考になりました。ところで、どの機種でプレイしました？") do |review_comment|
+
+ReviewComment.find_or_create_by(body: "参考になりました。ところで、どの機種でプレイしました？") do |review_comment|
   review_comment.member = razer
   review_comment.review = review_winter
 end
 
-review_comment_second = ReviewComment.find_or_create_by(body: "雪合戦の大会、勝てなくて詰んだ思い出あります。") do |review_comment|
+ReviewComment.find_or_create_by(body: "雪合戦の大会、勝てなくて詰んだ思い出あります。") do |review_comment|
   review_comment.member = test
   review_comment.review = review_winter
 end
+
+ReviewComment.find_or_create_by(body: "キューブステーションでやりました！画質も鮮やかで良かったですよ！") do |review_comment|
+  review_comment.member = zassi
+  review_comment.review = review_winter
+end
+
+ReviewComment.find_or_create_by(body: "最高。") do |review_comment|
+  review_comment.member = bee
+  review_comment.review = review_fantasy
+end
+
+ReviewComment.find_or_create_by(body: "いつかやってみたい！") do |review_comment|
+  review_comment.member = zassi
+  review_comment.review = review_dance
+end
+
+ReviewComment.find_or_create_by(body: "かなりおすすめです！") do |review_comment|
+  review_comment.member = bee
+  review_comment.review = review_dance
+end
+
+ReviewComment.find_or_create_by(body: "通常のルートとは違った深みがありますよね。") do |review_comment|
+  review_comment.member = bee
+  review_comment.review = review_fantasy
+end
+
+ReviewComment.find_or_create_by(body: "テストです。") do |review_comment|
+  review_comment.member = test
+  review_comment.review = review_hyper
+end
+
+
 
 
 Admin.find_or_create_by!(email: "review_admin@example.com") do |admin|
