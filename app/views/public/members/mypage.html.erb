@@ -22,9 +22,11 @@
   </div>
 
   <!プロフィール編集フォームへ遷移するボタン>
-  <div class = "my-3 text-center">
-    <%= link_to "プロフィール編集", edit_public_member_path(@member), class: "btn btn-success px-3" %>
-  </div>
+  <% unless @member.guest_member? %>
+    <div class = "my-3 text-center">
+      <%= link_to "プロフィール編集", edit_public_member_path(@member), class: "btn btn-success px-3" %>
+    </div>
+  <% end %>
 
   <!自分が投稿した公開レビュー一覧>
   <% @reviews.each do |review| %>

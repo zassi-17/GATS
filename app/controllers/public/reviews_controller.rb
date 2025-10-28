@@ -1,5 +1,6 @@
 class Public::ReviewsController < ApplicationController
-  before_action :authenticate_member!, except: [:index, :show]
+  before_action :authenticate_member!
+  before_action :ensure_guest_member, except: [:index, :show]
   before_action :correct_member, only: [:edit, :update, :destroy]
 
   def new
@@ -70,6 +71,14 @@ class Public::ReviewsController < ApplicationController
   #ストロングパラメータ
   def review_params
     params.require(:review).permit(:title, :body, :genre_id, :is_active, :rating)
+  end
+
+  #ゲストログインでレビュー投稿を禁止するメソッド
+  def ensure_guest_member
+    if current_member.email == "guest@example.com"
+      flash[:alert] = "ゲストユーザーはレビュー投稿できません。"
+      redirect_to public_mypage_path
+    end
   end
 
   

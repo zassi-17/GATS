@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  devise_scope :member do
+    post "members/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+
   root to: 'homes#top'
   get 'about' => 'homes#about'
 

@@ -6,52 +6,22 @@
 
   <div class = "row">
 
+    <!レビュー編集完了メッセージ>
+    <% if flash[:notice] %>
+      <div class = "alert alert-success">
+        <h2><%= flash[:notice] %></h2>
+      </div>
+    <% end %>
+
     <!レビューの詳細>
     <div class = "col-12 col-lg-3">
       <%= link_to public_member_path(@member) do %>
         <%= image_tag @member.image, size:"200x200", class: "rounded-circle" %>
       <% end %>
 
-      <% if @review.is_active %>
-        <h2 class = "text-success">公開レビュー</h2>
-      <% else %>
-        <h2 class = "text-danger">非公開レビュー</h2>
-      <% end %>
-    </div>
-  
-    <div class = "col-12 col-lg-9 mt-0 mt-lg-5">
+      <!レビュー詳細の部分テンプレート>
+      <%= render "public/reviews/review_detail", review: @review %>
 
-      <!レビュー編集完了メッセージ>
-      <% if flash[:notice] %>
-        <div class = "alert alert-success">
-          <h2><%= flash[:notice] %></h2>
-        </div>
-      <% end %>
-
-      <table>
-        <tbody>
-          <tr>
-            <th>評価：</th>
-            <td><%= render "public/reviews/static_rating", review: @review %></td>
-          </tr>
-
-          <tr>
-            <th>ゲームタイトル：</th>
-            <td class = "text-break"><%= @review.title %></td>
-          </tr>
-
-          <tr>
-            <th>ゲームジャンル：</th>
-            <td class = "text-break"><%= @review.genre.name %></td>
-          </tr>
-
-          <tr>
-            <th>感想：</th>
-            <td class = "text-break"><%= @review.body %><td>
-          </tr>
-
-        </tbody>
-      </table>
     </div>
   </div>
 

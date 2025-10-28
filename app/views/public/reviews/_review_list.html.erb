@@ -38,8 +38,10 @@
           <div class = "mb-3">
             投稿日：<%= review.created_at.strftime("%Y/%m/%d %H:%M") %>
           </div>
-
-          <%= link_to "この投稿を確認する>>>>>", public_review_path(review), class: "btn btn-outline-primary" %>
+          
+          <% if current_member %>
+            <%= link_to "この投稿を確認する>>>>>", public_review_path(review), class: "btn btn-outline-primary" %>
+          <% end %>
         </div>
       </div>
       
