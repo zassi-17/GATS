@@ -1,6 +1,6 @@
 <% if current_member %>
 
-  <%= form_with url: public_search_path, local: true, method: :get do |f| %>
+  <%= form_with url: public_searches_search_path, local: true, method: :get do |f| %>
 
     <div class = "d-flex justify-content-end">
       <%= f.text_field :key_word, placeholder: '検索キーワードを入力してください',class: "form-control col-4" %>

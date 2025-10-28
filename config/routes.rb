@@ -19,10 +19,10 @@ Rails.application.routes.draw do
     get 'mypage' => 'members#mypage', as: 'mypage'
 
     #会員・レビュー検索
-    get 'search' => 'searches#search'
+    get 'searches/search' => 'searches#search'
 
     #ジャンル検索
-    get 'genre_search' => 'searches#genre_search'
+    get 'searches/genre_search' => 'searches#genre_search'
     
     resources :members, only: [:show, :edit, :update] do
       patch :withdraw
