@@ -36,7 +36,7 @@
 - IDE：Visual Studio Code（VSCode）
 ​
 ## 使用素材
-・サイトロゴと架空のアイコン画像に使用  
+・サイトロゴ・アバウトページのイメージと架空のアイコン画像に使用  
 　　Canva（https://www.canva.com/）
     ChatGPT(https://chatgpt.com/)
 
