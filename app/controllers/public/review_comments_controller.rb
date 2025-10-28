@@ -1,5 +1,6 @@
 class Public::ReviewCommentsController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_guest_member
 
   def create
     @review = Review.find(params[:review_id])
@@ -31,5 +32,13 @@ class Public::ReviewCommentsController < ApplicationController
   #ストロングパラメータ
   def review_comment_params
     params.require(:review_comment).permit(:body)
+  end
+
+  #ゲストログインでコメント投稿を禁止するメソッド
+  def ensure_guest_member
+    if current_member.email == "guest@example.com"
+      flash[:alert] = "ゲストユーザーはコメント投稿できません。"
+      redirect_to public_mypage_path(current_member)
+    end
   end
 end

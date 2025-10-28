@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
-  before_action :authenticate_member!, only: [:mypage, :edit, :update, :withdraw]
+  before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:edit, :update, :withdraw]
   before_action :correct_member, only: [:edit, :update]
 
   def mypage
@@ -42,6 +43,14 @@ class Public::MembersController < ApplicationController
     params.require(:member).permit(:image, :name, :introduction, :email, :favorite_game)
   end
 
+  #ゲストログインでプロフィール編集を禁止するメソッド
+  def ensure_guest_member
+    if current_member.guest_member?
+      flash[:alert] = "ゲストユーザーはプロフィール編集できません。"
+      redirect_to public_mypage_path
+    end
+  end
+
   #他会員のプロフィールを編集を禁止するメソッド
   def correct_member
     @member = Member.find(params[:id])
@@ -49,7 +58,7 @@ class Public::MembersController < ApplicationController
     flash[:alert] = "他会員のプロフィール編集は禁止です"
     redirect_to public_mypage_path(@member)
     end
-  end
+  end 
 
 
 end

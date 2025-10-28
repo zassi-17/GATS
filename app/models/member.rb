@@ -21,6 +21,24 @@ class Member < ApplicationRecord
   #最終ログイン順
   scope :last_login, -> {order(current_sign_in_at: :desc)}
 
+  #複数でゲストメールアドレスを使用するための式
+  GUEST_MEMBER_EMAIL = "guest@example.com"
+
+  #ゲストログインするためのクラスメソッド
+   def self.guest
+    find_or_create_by!(email: GUEST_MEMBER_EMAIL) do |member|
+      member.name = "ゲストユーザー"
+      member.password = SecureRandom.urlsafe_base64
+      member.introduction = "ゲストユーザーとしてログイン中です。"
+      member.favorite_game = "なし"
+      member.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/guest-user.png"), filename:"guest-user.png")
+    end
+  end
+
+  #重複した式を記述しないためのメソッド
+  def guest_member?
+    email == GUEST_MEMBER_EMAIL
+  end
 
   #アカウント名の一致検索メソッド
   def self.looks(search,key_word)

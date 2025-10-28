@@ -25,8 +25,15 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    flash[:notice]
     about_path
+  end
+
+  #devise機能を使ったゲストログインするためのメソッド
+  def guest_sign_in
+    member = Member.guest
+    sign_in member
+    flash[:notice] = "ゲストユーザーとしてログインしました。"
+    redirect_to about_path
   end
 
 
