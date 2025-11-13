@@ -54,10 +54,17 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#アカウント登録・ログイン機能実装のためのgem
 gem 'devise'
+
+#ページネーション実装のためのgem
 gem 'kaminari','~> 1.2.1'
 
+#環境変数を使用するため、それを管理するgem
 gem 'dotenv-rails'
+
+#本番環境ではMySQLデータベースを使用する
 group :production do
   gem 'mysql2'
 end
@@ -66,5 +73,5 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 
-gem 'dotenv-rails'
+#ActiveStrageとS3連携させて画像を保存するためのgem
 gem 'aws-sdk-s3', require: false
