@@ -8,8 +8,8 @@ class Member < ApplicationRecord
 
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 20 }
-  validates :introduction, presence: true
-  validates :favorite_game, presence: true
+  validates :introduction, presence: true, length: { maximum: 500}
+  validates :favorite_game, presence: true, length: { maximum: 50}
 
   has_many :reviews, dependent: :destroy
 
