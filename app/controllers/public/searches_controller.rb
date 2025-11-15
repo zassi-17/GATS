@@ -6,7 +6,8 @@ class Public::SearchesController < ApplicationController
     @key_word = params[:key_word]
 
     if @model == "Member"
-      @members = Member.looks(params[:search],params[:key_word]).where(is_active: true).page(params[:page])
+      @members = Member.looks(params[:search],params[:key_word]).where(is_active: true)
+                   .where.not(email: Member::GUEST_MEMBER_EMAIL).page(params[:page])
     else
       @reviews = Review.looks(params[:search],params[:key_word]).where(is_active: true).page(params[:page])
     end
