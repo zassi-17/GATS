@@ -15,6 +15,12 @@
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item ml-3">
+            <%= render 'admin/searches/search_form' %>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link btn header_btn_color text-dark px-3 mx-2 my-2" %>
           </li>
