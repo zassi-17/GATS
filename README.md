@@ -22,21 +22,46 @@
 ・単純に何のゲームをプレイしたか確認したい時  
 ・他のゲーマーの評価を確認してから追加でゲームソフトを購入したい時  
 
+### 実装した機能
+・deviseを使用したアカウント作成・ログイン機能
+・ゲストログイン機能
+・レビューのCRAD機能
+・レビューへのコメント機能
+・投稿非公開機能
+・キーワード検索・ジャンル別、投稿検索機能
+・ソート機能
+・会員やレビューを管理する管理者機能
+・画面上部へスクロールするボタン
 ​
 ## 設計書
 ![ER図](docs/images/GATS_ER図.drawio.png)
 ![UI Flow_ユーザー](docs/images/UIFlows_ユーザー.drawio.png)
 ![UI Flow_管理者](docs/images/UIFlows_管理者.drawio.png)
 ​
+
 ## 開発環境
-- OS：Windows
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- JSライブラリ：jQuery
+- クライアントOS：Windows 11
+- サーバーOS：Ubuntu（SSH接続）
 - IDE：Visual Studio Code（VSCode）
-​
+### フロントエンド
+- HTML, CSS, JavaScript
+- Bootstrap 4.6.2, jQuery 3.7.1
+### バックエンド
+- 言語：Ruby 3.1.2
+- フレームワーク：Ruby on Rails 6.1.7
+- データベース：SQLite3
+
+## 本番環境
+- インフラ：AWS
+- OS：Ubuntu
+- サービス： EC2,RDS,VPC,IAM,S3,CloudWatch
+- データベース：MySQL
+- webサーバー：Nginx
+- アプリケーションサーバー：puma
+
+  
 ## 使用素材
-・サイトロゴ・アバウトページのイメージと架空のアイコン画像に使用  
+・サイトロゴ・トップ・アバウトページのイメージと架空のアイコン画像に使用  
 　　Canva（https://www.canva.com/）
     ChatGPT(https://chatgpt.com/)
 
