@@ -4,14 +4,14 @@
     <%= render "public/searches/genre_search_form", review: @review %>
   </div>
 
-  <div class = "row">
+  <!レビュー編集完了メッセージ>
+  <% if flash[:notice] %>
+    <div class = "alert alert-success">
+      <h2><%= flash[:notice] %></h2>
+    </div>
+  <% end %>
 
-    <!レビュー編集完了メッセージ>
-    <% if flash[:notice] %>
-      <div class = "alert alert-success">
-        <h2><%= flash[:notice] %></h2>
-      </div>
-    <% end %>
+  <div class = "row">
 
     <!レビューの詳細>
     <div class = "col-12 col-lg-3">

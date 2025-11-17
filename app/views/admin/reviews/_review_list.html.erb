@@ -1,0 +1,42 @@
+  <!レビュー一覧>
+  <div class = "d-flex justify-content-end align-items-end">
+      <%= link_to "新しい順", admin_reviews_path(latest: "true") %>
+      |<%= link_to "古い順", admin_reviews_path(old: "true") %>
+      |<%= link_to "五十音順", admin_reviews_path(title_alphabetical: "true") %>
+  </div>
+
+  <div class = "row d-flex ">
+    <table class ="table table-hover table-secondary mt-1">
+      <thead>
+        <tr>
+          <th>ゲームタイトル</th>
+          <th>レビューした会員</th>
+          <th>コメント数</th>
+          <th>公開ステータス</th>
+        </tr>
+      </thead>
+
+      <% reviews.each do |review| %>
+
+        <tbody>
+          <tr class = "position-relative">
+            <td><%= link_to truncate(review.title, length: 26), admin_review_path(review), class: "stretched-link text-dark" %></td>
+            <td><%= review.member.name %></td>
+            <td><%= review.review_comments.count %></td>
+            <td>
+              <% if review.is_active %>
+                <div class = "text-success">公開レビュー</div>
+              <% else %>
+                <div class = "text-danger">非公開レビュー</div>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+
+  <!ページネーション>
+  <div class = "d-flex justify-content-center">
+    <%= paginate reviews %>
+  </div>
