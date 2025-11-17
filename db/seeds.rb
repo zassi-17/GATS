@@ -14,6 +14,8 @@ zassi = Member.find_or_create_by!(email: "saigusa@example.com") do |member|
   member.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
   member.favorite_game = "火星侵攻軍6"
   member.is_active = true
+  member.created_at = Time.new(2025, 7, 1, 17, 16)
+  member.current_sign_in_at = Time.new(2025, 11, 1, 11, 30)
 end
 
 razer = Member.find_or_create_by!(email: "razer@example.com") do |member|
@@ -24,6 +26,8 @@ razer = Member.find_or_create_by!(email: "razer@example.com") do |member|
   member.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.png"), filename:"sample-user2.png")
   member.favorite_game = "壱~one~"
   member.is_active = true
+  member.created_at = Time.new(2025, 9, 1, 19, 56)
+  member.current_sign_in_at = Time.new(2025, 11, 5, 18, 10)
 end
 
 test = Member.find_or_create_by!(email: "test@example.com") do |member|
@@ -34,6 +38,8 @@ test = Member.find_or_create_by!(email: "test@example.com") do |member|
   member.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.png"), filename:"sample-user3.png")
   member.favorite_game = "最初の現実10"
   member.is_active = true
+  member.created_at = Time.new(2025, 11, 4, 22, 32)
+  member.current_sign_in_at = Time.new(2025, 11, 17, 7, 54)
 end
 
 bee = Member.find_or_create_by!(email: "bee@example.com") do |member|
@@ -44,6 +50,8 @@ bee = Member.find_or_create_by!(email: "bee@example.com") do |member|
   member.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.png"), filename:"sample-user4.png")
   member.favorite_game = "戦え！！BEEST～あの山の頂へ～"
   member.is_active = true
+  member.created_at = Time.new(2025, 10, 7, 20, 12)
+  member.current_sign_in_at = Time.new(2025, 11, 15, 7, 54)
 end
 
 
@@ -74,6 +82,7 @@ review_winter = Review.find_or_create_by!(title: "みんなの冬休み2") do |r
   review.genre = genre_adventure
   review.rating = 4
   review.is_active = true
+  review.created_at = Time.new(2025, 7, 21, 15, 00)
 end
 
 Review.find_or_create_by!(title: "ザ・スピードレース") do |review|
@@ -83,6 +92,7 @@ Review.find_or_create_by!(title: "ザ・スピードレース") do |review|
   review.genre = genre_race
   review.rating = 3
   review.is_active = true
+  review.created_at = Time.new(2025, 9, 30, 5, 20)
 end
 
 review_fantasy = Review.find_or_create_by!(title: "最初の現実10") do |review|
@@ -92,15 +102,25 @@ review_fantasy = Review.find_or_create_by!(title: "最初の現実10") do |revie
   review.genre = genre_rpg
   review.rating = 3.5
   review.is_active = true
+  review.created_at = Time.new(2025, 11, 16, 18, 00)
 end
 
-Review.find_or_create_by!(title: "火星侵攻軍6") do |review|
-  review.member = zassi
+Review.find_or_create_by!(title: "火星侵攻軍6", member: zassi) do |review|
   review.body = "過去一番でやりこんだゲームといっても過言ではない。なぜなら前作から敵の種類も格段に増え、
   CPUの攻撃手段が多様化したことで力押しでは勝てず戦略を考えることが楽しくなった。終盤の雰囲気的には続編が出ないかもしれないが続編待ってます。"
   review.genre = genre_action
   review.rating = 4.5
   review.is_active = true
+  review.created_at = Time.new(2025, 8, 16, 8, 00)
+end
+
+Review.find_or_create_by!(title: "火星侵攻軍6", member: test) do |review|
+  review.body = "このシリーズは今まで触れてこなかったが評判が良かったのでプレイしてみました。オンラインでの協力プレイが楽しすぎて、
+  今までプレイしてなかったことを後悔しました。"
+  review.genre = genre_action
+  review.rating = 5
+  review.is_active = true
+  review.created_at = Time.new(2025, 11, 10, 9, 00)
 end
 
 Review.find_or_create_by!(title: "墓場から何か声がしない？") do |review|
@@ -109,6 +129,7 @@ Review.find_or_create_by!(title: "墓場から何か声がしない？") do |rev
   review.genre = genre_horror
   review.rating = 1
   review.is_active = true
+  review.created_at = Time.new(2025, 10, 16, 1, 00)
 end
 
 review_dance =Review.find_or_create_by!(title: "リズムに乗ってダンス・イン・ヘブン") do |review|
@@ -117,6 +138,7 @@ review_dance =Review.find_or_create_by!(title: "リズムに乗ってダンス�
   review.genre = genre_rhythm
   review.rating = 2.5
   review.is_active = true
+  review.created_at = Time.new(2025, 10, 11, 16, 00)
 end
 
 Review.find_or_create_by!(title: "大南極大陸の事件Ｒ") do |review|
@@ -125,6 +147,7 @@ Review.find_or_create_by!(title: "大南極大陸の事件Ｒ") do |review|
   review.genre = genre_mystery
   review.rating = 5
   review.is_active = true
+  review.created_at = Time.new(2025, 11, 12, 1, 00)
 end
 
 review_hyper =Review.find_or_create_by!(title: "ハイパーマイク・サンセット") do |review|
@@ -133,6 +156,7 @@ review_hyper =Review.find_or_create_by!(title: "ハイパーマイク・サン�
   review.genre = genre_action
   review.rating = 4.5
   review.is_active = true
+  review.created_at = Time.new(2025, 9, 16, 12, 00)
 end
 
 Review.find_or_create_by!(title: "家具を作ろう　level2") do |review|
@@ -141,6 +165,7 @@ Review.find_or_create_by!(title: "家具を作ろう　level2") do |review|
   review.genre = genre_simulation
   review.rating = 2
   review.is_active = true
+  review.created_at = Time.new(2025, 10, 16, 21, 00)
 end
 
 Review.find_or_create_by!(title: "パイナップルハンター・リターンズ") do |review|
@@ -149,6 +174,7 @@ Review.find_or_create_by!(title: "パイナップルハンター・リターン�
   review.genre = genre_action
   review.rating = 4.5
   review.is_active = true
+  review.created_at = Time.new(2025, 11, 16, 22, 50)
 end
 
 
