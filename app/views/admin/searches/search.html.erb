@@ -2,77 +2,12 @@
   <!モデル選択フォームでユーザーを選んだ場合の会員一覧>
   <% if @model == "Member" %>
     <h2>ユーザー検索結果：キーワード"<%= @key_word %>"</h2>
-        <div class = "row d-flex ">
-          <table class ="table table-hover table-secondary border mt-1">
-            <thead>
-              <tr>
-                <th>アカウント名</th>
-                <th>メールアドレス</th>
-                <th>会員ステータス</th>
-              </tr>
-            </thead>
-
-            <% @members.each do |member| %>
-
-            <tbody>
-              <tr class = "position-relative">
-                <td><%= link_to member.name, edit_admin_member_path(member), class: "stretched-link text-dark" %></td>
-                <td><%= member.email %></td>
-                <td>
-                  <% if member.is_active %>
-                    <div class = "text-primary">有効会員</div>
-                  <% else %>
-                    <div class = "text-danger">退会会員</div>
-                  <% end %>
-                </td>
-             </tr>
-           </tbody>
-          <% end %>
-          </table>
-        </div>
-
-      <!ページネーション>
-        <div class = "d-flex justify-content-center">
-          <%= paginate @members %>
-        </div>
+      <%= render 'admin/members/member_list', members: @members %>
 
   <!モデル選択フォームでレビュータイトル選んだ場合のレビュー一覧>
   <% else %>
     <h2>レビュー検索結果：キーワード"<%= @key_word %>"</h2>
-      <div class = "row d-flex ">
-        <table class ="table table-hover table-secondary mt-1">
-          <thead>
-            <tr>
-              <th>ゲームタイトル</th>
-              <th>レビュー本文</th>
-              <th>コメント数</th>
-              <th>公開ステータス</th>
-            </tr>
-          </thead>
+      <%= render 'admin/reviews/review_list', reviews: @reviews %>
 
-          <% @reviews.each do |review| %>
-
-          <tbody>
-            <tr class = "position-relative">
-              <td><%= link_to review.title, admin_review_path(review), class: "stretched-link text-dark" %></td>
-              <td><%= truncate(review.body, length: 20, omission: "......") %></td>
-              <td><%= review.review_comments.count %></td>
-              <td>
-                <% if review.is_active %>
-                  <div class = "text-success">公開レビュー</div>
-                <% else %>
-                  <div class = "text-danger">非公開レビュー</div>
-                <% end %>
-              </td>
-            </tr>
-          </tbody>
-          <% end %>
-        </table>
-      </div>
-
-      <!ページネーション>
-      <div class = "d-flex justify-content-center">
-        <%= paginate @reviews %>
-      </div>
   <% end %>
 </div>

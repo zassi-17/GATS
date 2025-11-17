@@ -1,54 +1,16 @@
 <div class = "container" >
   
-  <!会員数とソートリンク>
+  <!会員数と編集完了しました！メッセージ>
   <div class = "mt-2">
     <h2>全会員数　<%= Member.count %>アカウント</h2>
     
-    <div class = "d-flex justify-content-end align-items-end">
-      <%= link_to "五十音順", admin_members_path(alphabetical: "true") %>
-      |<%= link_to "最終ログイン順", admin_members_path(last_login: "true") %>
-    </div>
-  </div>
-
-    <!編集完了しました！>
     <% if flash[:notice] %>
       <div class = "alert alert-success">
         <%= flash[:notice] %>
       </div>
     <% end %>
-
-  <!会員一覧>
-  <div class = "row d-flex ">
-    <table class ="table table-hover table-secondary border mt-1">
-      <thead>
-        <tr>
-          <th>アカウント名</th>
-          <th>メールアドレス</th>
-          <th>会員ステータス</th>
-        </tr>
-      </thead>
-
-      <% @members.each do |member| %>
-
-      <tbody>
-        <tr class = "position-relative">
-          <td><%= link_to member.name, edit_admin_member_path(member), class: "stretched-link text-dark" %></td>
-          <td><%= member.email %></td>
-          <td>
-            <% if member.is_active %>
-              <div class = "text-primary">有効会員</div>
-            <% else %>
-              <div>退会会員</div>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
-      <% end %>
-    </table>
   </div>
 
-  <!ページネーション>
-  <div class = "d-flex justify-content-center">
-    <%= paginate @members %>
-  </div>
+  <!管理者用会員一覧の部分テンプレート>
+  <%= render 'member_list', members: @members %>
 </div>
