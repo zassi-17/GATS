@@ -86,8 +86,8 @@ class Public::ReviewsController < ApplicationController
   def correct_member
     @review = Review.find(params[:id])
     unless @review.member == current_member
-    redirect_to public_reviews_path(@review)
     flash[:alert] = "他会員レビューの編集は禁止です"
+    redirect_to public_reviews_path(@review)
     end
   end
 
