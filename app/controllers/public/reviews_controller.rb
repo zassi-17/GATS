@@ -75,7 +75,7 @@ class Public::ReviewsController < ApplicationController
 
   #ゲストログインでレビュー投稿を禁止するメソッド
   def ensure_guest_member
-    if current_member.email == "guest@example.com"
+    if current_member.guest_member?
       flash[:alert] = "ゲストユーザーはレビュー投稿できません。"
       redirect_to public_mypage_path
     end
